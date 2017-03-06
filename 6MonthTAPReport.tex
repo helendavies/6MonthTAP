@@ -28,15 +28,51 @@ Here are the aims that I set in last TAP meeting:
 
 Not part of collaboration any more.
 
-\subsection{Motivation}
-Here I will talk about air plasmas and lots of biology. 
-Lots of examples of what plasmas, in particular air plasmas, can do. 
-That'll keep the biologists happy.
+\subsection{Plasmas in Biology}
+Plasmas are rapidly extending into the field of medicine, with potential applications for wound healing \cite{Haertel2014nonthermal, Isbary2013nonthermal}, cancer treatment \cite{Hirst2016low, Fridman2007floating}, coagulation \cite{Fridman2006blood, Chen2009blood} and sterilisation \cite{Fridman2006blood, Laroussi2002nonthermal}.
+Applications such as there pertain to plasmas ability to interact with living biological substrates such as bacteria, both in planktonic and biofilm forms \cite{Joshi2010control, Pei2012inactivation, Ziuzina2015cold} and eukaryotic, mammalian cells \cite{Haertel2014nonthermal}.
+For sterilisation applications, the properties of low temperature plasma, in particular the low temperature and ability to operate at atmospheric pressure, allow their use both on equipment surfaces \cite{Laroussi2002nonthermal} and also directly on biological tissue, for example chronically infected wounds \cite{Haertel2014nonthermal, Isbary2013nonthermal, Fridman2006blood}.
+
+However, until now, it seems the applications of plasmas have resulted from trial and error approaches, rather than a thorough understanding of their mechanism of action, with particular regards to their specific interactions at the molecular level with, for example, cells.
+There is also a distinct lack of safety guidelines relating to safe levels of exposure to plasma components such as electric fields, emission and reactive neutral species, therefore, caution must be exercised when formulating new plasma treatments. 
+\cite{Isbary2013cold} has some comments of plasma safety.
+I guess, until the true mechanism of action for each of the main plasma components are determined, strict guidelines cannot advance much beyond trial and error as educated predictions of safe "doses" won't be possible??
+
+While exact mechanisms of action are not fully understood, there have been investigations into the roles of the different plasma components.
+Briefly, low temperature plasmas are very weakly ionised gases (degree of ionisation $<$ 1\%), with a global temperature of roughly room temperature ***ADD CITATION/TEMP RANGE***, and dry reaction chemistry, allowing direct contact with biological substrates.
+Electrons liberated in the plasma mediate the different plasma components, for example, dissociation of molecules, yielding reactive radical species, emission as a result of electron impact electronic excitation and ionisation which yields ions and allows plasma sustainment.
+It is, therefore, likely that the efficacy seen so far using plasmas is due to this complex plasma composition, and also what suggests that bacteria are going to be less likely to build up resistance, due to the multimodal nature of the plasma treatment.
+
+The main three components that will be discussed in the next sections are charged particles and associated electric fields, emission of, for example UV photons, and reactive neutral species.
+
+\subsection{Reactive Neutral Species}
+
+
+\subsection{Emission}
+
+\subsection{Charged Particles and Electric Fields}
+\subsubsection{Charged particles}
+Direct vs indirect treatment is one method used to try and delineate the roles of charged particles/electric fields from the other plasma components.
+Investigations such as this have suggested that charged particles or electric fields, or a combination of both, are important for bacterial killing as direct treatment is much more efficient that indirect treatment \cite{Fridman2007comparison}.
+
+Further evidence that charged particles are important came when Mendis \textit{et al} \cite{Mendis2000a} suggested that accumulation of ions on the membranes of cells could cause an electrostatic force greater than the tensile strength of the membrane causing rupture.
+This was noted following the observations of Laroussi \textit{et al} \cite{Laroussi1999images} that showed morphological changes and lysis of the treated bacteria.
+
+
+
+\subsubsection{Electric Fields}
+Electric fields - Electroporation \cite{Weaver1994molecular, Weaver2000electroporation}. Has been used for transfection of cells.
+Interestingly, looking at the fields required for electroporation of eukaryotic and prokaryotic cells, prokaryotic cells need much higher voltages. Could this be a problem for wound healing?? As in, the voltages needed to kill bacteria would kill host cells first \cite{ElectroporationGuide}.
+
+Electric fields have been used in cancer treatment for disrupting mitosis \cite{Giladi2014mitotic} which sounds pretty cool.
+
+
+
+
 
 
 \section{Air Plasma Source Design}
 \subsection{Confiuration}
-Testing citation: \cite{Kolb2008cold}.
 
 Overview of what others have done. Can use some pictures from the 1.2.17 lab meeting presentation I did.
 Pictures in the emails from Deborah.
@@ -46,7 +82,16 @@ Nanosecond pulsing.
 Why? What is the point? What does it mean? Why is it necessary for air and less so for noble gas plasmas?
 
 \section{Air plasma model}
-Whatever needs to go in here.... Vasco Guerra's air chem set....
+To start developing a suitable air chemistry reaction set to be used in GlobalKin, Vasco Guerra was kind enough to share his reaction set from \cite{Kutasi2016tuning}.
+Using this as a starting point, I have been working on developing a nitrogen set to start with. 
+In order to make a set that GlobalKin can use, there is a very specific format to the input file required.
+Firstly, all the species involved in the reaction set need to be listed.
+For this set, this includes N, N$_2$, the first 17 vibrational states of ground state N$_2$ (N$_2$ (X, v = 0 - 17)), excited states of N$_2$ (N$_2$ (A), N$_2$ (B), N$_2$ (B'), N$_2$ (C), and a species N$_2$ (AP1S) which is the combination of N$_2$ (a), N$_2$ (a') and N$_2$ (w) (GlobalKin only contains cross sections for this collective species, rather than each of the three individual ones, therefore, for the time being, they have to be treated as one), excited N atoms (N ($^2$P) and N($^2$D) and ions N$_2$+, N$_4$+ and N$_2$ (B)+.
+
+Firstly, all the species in this initial set were listed, along with all the reactions only involving nitrogen. 
+From this point, electron impact reaction cross sections 
+
+
 
 \bibliographystyle{ieeetr}
 \bibliography{/Users/hld523/Bibliography/MyPapers}
