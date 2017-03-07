@@ -6,90 +6,116 @@
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
 								% TeX will automatically convert eps --> pdf in pdflatex		
 \usepackage{amssymb}
-
+\usepackage{color}
+\newcommand{\todo}[1]{ \textcolor{red}{\bf{To Do:} #1}}
+\newcommand{\toref}[1]{ \textcolor{blue}{\bf{REFERENCE #1}}}
 %SetFonts
 
 %SetFonts
 
 
 \title{6 Month TAP Report}
-\author{Me}
-%\date{}							% Activate to display a given date or no date
+\author{By Me :)}
+\date{}							% Activate to display a given date or no date
 
 \begin{document}
 \maketitle
-\section{Introduction}
-\subsection{Overview of previous TAP}
-Here are the aims that I set in last TAP meeting:
-\begin{itemize}
-\item Decide on air chemistry set
-\item Decide on air plasma geometry
-\end{itemize}
 
-Not part of collaboration any more.
-
-\subsection{Plasmas in Biology}
+\section{Wounds and Plasma Treatment}
 Plasmas are rapidly extending into the field of medicine, with potential applications for wound healing \cite{Haertel2014nonthermal, Isbary2013nonthermal}, cancer treatment \cite{Hirst2016low, Fridman2007floating}, coagulation \cite{Fridman2006blood, Chen2009blood} and sterilisation \cite{Fridman2006blood, Laroussi2002nonthermal}.
 Applications such as there pertain to plasmas ability to interact with living biological substrates such as bacteria, both in planktonic and biofilm forms \cite{Joshi2010control, Pei2012inactivation, Ziuzina2015cold} and eukaryotic, mammalian cells \cite{Haertel2014nonthermal}.
 For sterilisation applications, the properties of low temperature plasma, in particular the low temperature and ability to operate at atmospheric pressure, allow their use both on equipment surfaces \cite{Laroussi2002nonthermal} and also directly on biological tissue, for example chronically infected wounds \cite{Haertel2014nonthermal, Isbary2013nonthermal, Fridman2006blood}.
 
-However, until now, it seems the applications of plasmas have resulted from trial and error approaches, rather than a thorough understanding of their mechanism of action, with particular regards to their specific interactions at the molecular level with, for example, cells.
-There is also a distinct lack of safety guidelines relating to safe levels of exposure to plasma components such as electric fields, emission and reactive neutral species, therefore, caution must be exercised when formulating new plasma treatments. 
-\cite{Isbary2013cold} has some comments of plasma safety.
-I guess, until the true mechanism of action for each of the main plasma components are determined, strict guidelines cannot advance much beyond trial and error as educated predictions of safe "doses" won't be possible??
+This project is concerned with wound healing and how low temperature air plasma can be developed to allow treatment of wounds.
+Plasmas can be used on wounds with two aims:
+\begin{enumerate}
+\item Bacterial killing
+\item Host cell activation and healing promotion
+\end{enumerate}
 
 While exact mechanisms of action are not fully understood, there have been investigations into the roles of the different plasma components.
-Briefly, low temperature plasmas are very weakly ionised gases (degree of ionisation $<$ 1\%), with a global temperature of roughly room temperature ***ADD CITATION/TEMP RANGE***, and dry reaction chemistry, allowing direct contact with biological substrates.
+Briefly, low temperature plasmas are very weakly ionised gases (degree of ionisation $<$ 1\%), with a global temperature of of approximately room temperature ($< 40^{\circ} C$), and dry reactive environment, allowing direct contact with biological substrates.
 Electrons liberated in the plasma mediate the different plasma components, for example, dissociation of molecules, yielding reactive radical species, emission as a result of electron impact electronic excitation and ionisation which yields ions and allows plasma sustainment.
 It is, therefore, likely that the efficacy seen so far using plasmas is due to this complex plasma composition, and also what suggests that bacteria are going to be less likely to build up resistance, due to the multimodal nature of the plasma treatment.
 
 The main three components that will be discussed in the next sections are charged particles and associated electric fields, emission of, for example UV photons, and reactive neutral species.
 
-\subsection{Reactive Neutral Species}
+
+\subsection{Bacterial Killing}
+\subsubsection{RONS}
+Whilst reactive species were thought to be purely damaging molecules produced in the body which only serve to promote disease and ageing \cite{Harman1955aging}, it is now known that their role is far more complex than this, and that reactive species have crucial roles to play in the immune system and in normal physiological signalling \cite{Thannickal2000reactive}.
+RONS are produced by phagocytes during an immune response in order to kill off invading bacteria, and severe diseases such as chronic granulomatous disease (CGD) can develop if part of the system generating these RONS is deficient \cite{Fang2004antimicrobial}
+In order to cause bacterial killing, RONS can interact with multiple bacterial targets such as thiols, metal centres, DNA and lipids \cite{Fang2004antimicrobial}.
+ROS in particular are attributed to DNA damage, whereas RNS inhibit respiration and interfere with DNA replication \cite{Fang2004antimicrobial}.
+
+LTP is a highly efficient source of reactive species, produced by mechanisms such as electron impact excitation and dissociation.
+The gas present in the plasma determines the types of species that will be produced. 
+In the case of air plasma, reactive oxygen and nitrogen species (RONS) are readily produced and these have multiple possible effects on biological substrates.
+Important species produced include atomic oxygen (O), ozone (O$_3$), singlet delta oxygen (O$_2$($^1\Delta$)), superoxide (O$_2$-), atomic nitrogen (N), hydroxyl radicals (OH), hydrogen peroxide (H$_2$O$_2$) and various nitrogen oxides (NO, NO$_2$ and N$_2$O) \cite{Graves2014low}.
 
 
-\subsection{Emission}
+\subsubsection{UV}
+UV emission is known to be harmful at certain wavelengths and powers, and, as such, it has been used extensively for sterilisation purposes due to it's ability to interfere with DNA \cite{Laroussi2004evaluation}.
+Guidelines state that \todo{find paper with safety guidelines in}.
+To investigate the effects of UV radiation emitted from plasmas, windows can be put between the plasma and the sample that allow specific wavelengths of UV radiation through, while blocking all other plasma components. 
+Using these methods, there is evidence to suggest that the effects of UV radiation are negligable \cite{Laroussi2004evaluation, Dobrynin2009physical}.
 
-\subsection{Charged Particles and Electric Fields}
-\subsubsection{Charged particles}
-Direct vs indirect treatment is one method used to try and delineate the roles of charged particles/electric fields from the other plasma components.
+\subsubsection{Charged Particles and Electric Fields}
+As charged particles are generally confined within the strong electric fields within the plasma, they don't tend to travel far outside the plasma bulk.
+This means that one method for delineating the roles of electric fields and particles from the other plasma components is by comparing direct (where the biological substrate is in direct contact with the plasma) and indirect (where the biological substrate is only exposed to the plasma effluent) plasma treatments.
 Investigations such as this have suggested that charged particles or electric fields, or a combination of both, are important for bacterial killing as direct treatment is much more efficient that indirect treatment \cite{Fridman2007comparison}.
-
-Further evidence that charged particles are important came when Mendis \textit{et al} \cite{Mendis2000a} suggested that accumulation of ions on the membranes of cells could cause an electrostatic force greater than the tensile strength of the membrane causing rupture.
+A proposed mechanism for this increased efficacy when charged particles are in contact with the biological sample came from Mendis $et al$ in 2000 \cite{Mendis2000a} who suggested that accumulation of ions on the membranes of cells could cause an electrostatic force greater than the tensile strength of the membrane causing rupture.
 This was noted following the observations of Laroussi \textit{et al} \cite{Laroussi1999images} that showed morphological changes and lysis of the treated bacteria.
+\todo{Look into electroporation mechanism. Is this just electroporation by plasmas???}
+
+\subsection{Host Cell Activation and Healing Promotion}
+\todo{?Include anything on safety}
+
+Plasma treatment increased speed of confluence after scratch test \cite{Tipa2011plasma}.
+Plasma treatment of keratinocytes increases their proliferation and the production of growth factors \cite{Bekeschus2016the} (which sites other papers).
+\cite{Barton2013nonthermal} looks at the effect on gene expression of HaCaT cells following plasma treatment in relation to genes important in wounding/healing.
+Plasma seems to be toxic to lymphocytes but not neutrophils or monocytes due to strong oxidation in the cell membrane and cytosol. This may be beneficial as excessive lymphocytes are present in pathological wounds and, therefore, by removing them, it may promote healing \cite{Bekeschus2016the}.
+\toref{Kramer2013suitability, Haertel2014, Bender2012, Brehmer2015, Joshi, Kong2009}
+
+
+Activation of host cells..... 
+
+\subsubsection{RONS}
+\subsubsection{UV}
+\subsubsection{Charged Particles and Electric Fields}
 
 
 
-\subsubsection{Electric Fields}
-Electric fields - Electroporation \cite{Weaver1994molecular, Weaver2000electroporation}. Has been used for transfection of cells.
-Interestingly, looking at the fields required for electroporation of eukaryotic and prokaryotic cells, prokaryotic cells need much higher voltages. Could this be a problem for wound healing?? As in, the voltages needed to kill bacteria would kill host cells first \cite{ElectroporationGuide}.
+\section{Plasma Sources}
+Here I talk about geometries that I could use, specifically review air plasmas.
+\subsection{Geometry}
+\subsubsection{Voltages, Waveforms and Power etc}
 
-Electric fields have been used in cancer treatment for disrupting mitosis \cite{Giladi2014mitotic} which sounds pretty cool.
-
-
-
-
-
-
-\section{Air Plasma Source Design}
-\subsection{Confiuration}
-
-Overview of what others have done. Can use some pictures from the 1.2.17 lab meeting presentation I did.
-Pictures in the emails from Deborah.
-
-\subsection{Power Supply}
 Nanosecond pulsing.
 Why? What is the point? What does it mean? Why is it necessary for air and less so for noble gas plasmas?
 
-\section{Air plasma model}
-To start developing a suitable air chemistry reaction set to be used in GlobalKin, Vasco Guerra was kind enough to share his reaction set from \cite{Kutasi2016tuning}.
-Using this as a starting point, I have been working on developing a nitrogen set to start with. 
-In order to make a set that GlobalKin can use, there is a very specific format to the input file required.
-Firstly, all the species involved in the reaction set need to be listed.
-For this set, this includes N, N$_2$, the first 17 vibrational states of ground state N$_2$ (N$_2$ (X, v = 0 - 17)), excited states of N$_2$ (N$_2$ (A), N$_2$ (B), N$_2$ (B'), N$_2$ (C), and a species N$_2$ (AP1S) which is the combination of N$_2$ (a), N$_2$ (a') and N$_2$ (w) (GlobalKin only contains cross sections for this collective species, rather than each of the three individual ones, therefore, for the time being, they have to be treated as one), excited N atoms (N ($^2$P) and N($^2$D) and ions N$_2$+, N$_4$+ and N$_2$ (B)+.
 
-Firstly, all the species in this initial set were listed, along with all the reactions only involving nitrogen. 
-From this point, electron impact reaction cross sections 
+\section{Work to Date: Plasma Modelling}
+Use of GlobalKin, as presented in the previous TAP, this is a 0-Dimensional, global plasma chemistry model which calculates time evolution of plasma species, given specific geometry and plasma parameters.
+For the last TAP I was just using Sandra's chemistry set to learn how to use the model and try to simulate some of the experiments I carried out during my rotation project.
+However, since then I have been working towards building my own air chemistry set.
+This is not a trivial task and therefore, I am starting with building a set for nitrogen.
+
+\subsection{Nitrogen Chemistry Set}
+Ta to Vasco Guerra for set from \cite{Kutasi2016tuning}.
+\subsubsection{Species}
+Included species included in Vasco: N, N$_2$, the first 17 vibrational states of ground state N$_2$ (N$_2$ (X, v = 0 - 17)), excited states of N$_2$ (N$_2$ (A), N$_2$ (B), N$_2$ (B'), N$_2$ (C), and a species N$_2$ (AP1S) which is the combination of N$_2$ (a), N$_2$ (a') and N$_2$ (w) (GlobalKin only contains cross sections for this collective species, rather than each of the three individual ones, therefore, for the time being, they have to be treated as one), excited N atoms (N ($^2$P) and N($^2$D) and ions N$_2$+, N$_4$+ and N$_2$ (B)+.
+\subsubsection{Electron Impact Reactions}
+In-built cross sections in GlobalKin
+\subsubsection{VT reactions}
+These are important reactions as they are important destruction mechanisms for vibrationally excited nitrogen molecules
+
+\section{Future Work}
+\begin{itemize}
+\item Add to chemistry set by adding in O$_2$. For now, I am only going to consider dry air, therefore only N$_2$:O$_2$ gas mixture.
+\item EXPERIMENTS!!!!
+\end{itemize}
+
 
 
 
