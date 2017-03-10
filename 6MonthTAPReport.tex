@@ -153,36 +153,7 @@ Lab trials show the importance of electrical currents/fields for wound healing, 
 \todo{E field strengths?? Applied voltages?? Comparison to plasmas}
 %The threshold field strength noticeable by cells is 4500 times smaller than that required for electroporation of skeletal muscle \cite{Messerli2011extracellular}.
 
-
-\section{Plasma Sources}
-Here I talk about geometries that I could use, specifically review air plasmas.
-\subsection{Geometry}
-\subsubsection{Dielectric Barrier Discharge}
-\cite{Fridman2007comparison} looks at direct and indirect plasma treatment. Using DBD with and without mesh/airflow to try and separate out the roles of ions and reactive species.
-Both use atmospheric air as the gas.
-
-Both operate at 35 kV, 12 kHz frequency and power density of 0.8 W/cm\textsuperscript{3}.
-
-
-\subsubsection{Floating-Electrode Dielectric Barrier Discharge}
-Similar to DBD, the FE-DBD can be used whereby one of the electrodes can be replaced with anything with a sufficiently high charge storage capacity, a so-called, floating electrode (FE). 
-Biological samples and skin are able to do this due to their high water content {\cite{Fridman2006blood}}.
-Good diagrams of the electrodes are shown in {\cite{Fridman2006blood}}.
-Has been shown that FE-DBD can accelerate the coagulation process in the blood. It seems to catalyse the physiological process of clotting rather than exerting a physical influence.
-This is operated at 20 kV at pulsed and continuous frequency.
-
-
-
-\subsubsection{Plasma Jets}
-
-
-\subsubsection{Voltages, Waveforms and Power etc}
-
-Nanosecond pulsing.
-Why? What is the point? What does it mean? Why is it necessary for air and less so for noble gas plasmas?
-
-
-\section{Work to Date: Plasma Modelling}
+\section{Work to Date: Plasma Modelling \& Benchmarking}
 Use of GlobalKin, as presented in the previous TAP, this is a 0-Dimensional, global plasma chemistry model which calculates time evolution of plasma species, given specific geometry and plasma parameters.
 For the last TAP I was just using Sandra's chemistry set to learn how to use the model and try to simulate some of the experiments I carried out during my rotation project.
 However, since then I have been working towards building my own air chemistry set.
@@ -196,6 +167,75 @@ Included species included in Vasco: N, N$_2$, the first 17 vibrational states of
 In-built cross sections in GlobalKin
 \subsubsection{VT reactions}
 These are important reactions as they are important destruction mechanisms for vibrationally excited nitrogen molecules
+
+
+\section{Plasma Sources}
+When considering the plasma source to build for wound treatment, it would be of use to develop the source in a way that it is possible to model it well.
+For example, 
+
+
+Here I talk about geometries that I could use, specifically review air plasmas.
+\subsection{Geometry}
+\subsubsection{Dielectric Barrier Discharge}
+Dielectric barrier discharges are so called due to having a dielectric barrier on one of the electrodes to limit the current flow and prevent the glow-to-arc transition. 
+They can operate at atmospheric pressure using air and don't necessarily require a gas flow \cite{Fridman2013plasmamedicine}
+They have been used extensively for applications such as ozone production and polymer treatment and more recently, for biomedical applications \cite{Fridman2013plasmamedicine, Brehmer2015alleviation}.
+A typical DBD setup is shown in figure \ref{fig:DBD} \todo{Add a figure showing a DBD setup}.
+DBDs have shown to be effective for bacterial killing and other biomedical applications such as blood clotting, and there have been clinical trials into their effectiveness for wound healing \cite{Daeschlein2012in, Fridman2006blood, Brehmer2015alleviation}. 
+
+DBDs have to be operated using alternating current.
+
+
+\todo{Speak with Jerome about air plasma designs. Something Sandra built to try with his nanosecond supply??}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{Figures/DBD}
+\caption{DBD}
+\label{fig:DBD}
+\end{figure}
+
+DBDs have been shown in laboratory conditions to be effective for bacterial killing \cite{Daeschlein2012in, Fridman2006blood}.
+An air DBD, PlasmaDerm has been tested on chronic ulcers in a clinical trial, though the results are not overly promising \cite{Brehmer2015alleviation}, as plasma induced killing of wound colonising bacteria was not long lasting and there did not appear to be any acceleration in wound healing in the plasma treated group compared to the controls.
+The device operates at AC voltage pulses with amplitudes $>$10 kV and a power density of 120 mW/cm\textsuperscript{2} \cite{Brehmer2015alleviation}.
+
+
+
+\cite{Fridman2007comparison} looks at direct and indirect plasma treatment. Using DBD with and without mesh/airflow to try and separate out the roles of ions and reactive species.
+Both use atmospheric air as the gas.
+Both operate at 35 kV, 12 kHz frequency and power density of 0.8 W/cm\textsuperscript{3}.
+
+In terms of operation, there was a study investigating pulsing of DBD, using both micro- and nanosecond pulses. 
+It was found that nanosecond pulsing gave a more homogenous plasma, that would ignite more uniformly over a non-uniform surface.
+Specifically, patterned (i.e. not flat) agar was used as the target and it was seen that with microsecond pulses, the plasma was more filamentary and some areas didn't ignite at all \cite{Ayan2009application}. 
+However, using the nanosecond pulses, the plasma was more uniform over the entire surface.
+This is preferable when considering wound treatments, as the wound bed is not smooth.
+Further to this, nanosecond pulsed DBD was found to be more effective for bacterial killing \cite{Ayan2008nanosecond}
+
+
+\subsubsection{Floating-Electrode Dielectric Barrier Discharge}
+Similar to DBD, the FE-DBD can be used whereby one of the electrodes can be replaced with anything with a sufficiently high charge storage capacity, a so-called, floating electrode (FE). 
+Biological samples and skin are able to do this due to their high water content {\cite{Fridman2006blood}}.
+Good diagrams of the electrodes are shown in {\cite{Fridman2006blood}}.
+Has been shown that FE-DBD can accelerate the coagulation process in the blood. It seems to catalyse the physiological process of clotting rather than exerting a physical influence.
+This is operated at 20 kV at pulsed and continuous frequency.
+
+\subsubsection{Corona Discharge}
+\cite{Dobrynin2011inactivation} - inactivation of bacteria using corona discharge.
+
+\subsubsection{Plasma Jets}
+\cite{Pei2012inactivation} - handheld air plasma 'Plasma Flashlight'
+\cite{Chen2009blood} - Blood clotting trial using plasma jet
+\cite{Walsh2011portable} - A portable air plasma ** Looks interesting!
+
+
+\subsubsection{Voltages, Waveforms and Power etc}
+
+Nanosecond pulsing.
+Why? What is the point? What does it mean? Why is it necessary for air and less so for noble gas plasmas?
+
+
 
 \section{Future Work}
 \begin{itemize}
