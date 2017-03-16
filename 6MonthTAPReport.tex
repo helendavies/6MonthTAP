@@ -8,6 +8,7 @@
 \usepackage{amssymb}
 \usepackage{color}
 \usepackage{subcaption}
+\usepackage{caption}
 
 \newcommand{\todo}[1]{ \textcolor{red}{\bf{To Do:} #1}}
 \newcommand{\toref}[1]{ \textcolor{blue}{\bf{REFERENCE #1}}}
@@ -157,20 +158,40 @@ Lab trials show the importance of electrical currents/fields for wound healing, 
 %The threshold field strength noticeable by cells is 4500 times smaller than that required for electroporation of skeletal muscle \cite{Messerli2011extracellular}.
 
 \section{Work to Date: Plasma Modelling \& Benchmarking}
-Use of GlobalKin, as presented in the previous TAP, this is a 0-Dimensional, global plasma chemistry model which calculates time evolution of plasma species, given specific geometry and plasma parameters.
-Previously, I used the model to carry out a comparison between some experimental data I took in a helium/water plasma and simulations.
 
-However, for the purposes of my PhD project, it would be beneficial to develop an air plasma model, as air plasma is what I am interested in.
-To do this, GlobalKin will be used and an appropriate chemistry reaction set developed.
-In order to develop the reaction set, Vasco Guerra kindly shared his air chemistry reaction set from \cite{Kutasi2016tuning} (for use in a different model) which has proved to be a valuable starting point.
-Due to the complexity of air (N$_2$:O$_2$), I have started by developing a set just for pure nitrogen.
+For the last few months I have been continuing to work on plasma simulations, using GlobalKin.
+As detailed in my previous TAP report, GlobalKin is a 0 dimensional global chemistry plasma model that calculates the time evolution of plasma species, given specific geometry and plasma parameters. \cite{Stafford2004O2}.
+To do this, it has an internal Boltzmann solver for calculating electron energy distribution functions over time which it then combines with a reaction chemistry module which outlines all the species and reactions taking place in the plasma.
+Finally, species densities are determined by an ordinary differential equation (ODE) solver to solve the ODEs formed by the reaction chemistry module.
+\textbf{Figure \ref{fig:GlobalKin}} is a schematic for how GlobalKin works.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{Figures/GlobalKinDiagram}
+\caption{Diagram outlining how GlobalKin works. Firstly, ODEs for species density and electron temperature are constructed. This takes direct GlobalKin inputs specified by the user, as well as electron reaction rate coefficients, diffusion coefficients and mobilities from the Boltzmann solver. An ODE solver then solves the equations and the new species densities are fed back into the ODEs and Boltzmann solver, for new densities to be calculated. At regular intervals, the Boltzmann solver also updates and new coefficients are fed back into the ODEs for the ODE solver to work with. This results in the time evolution of species densities and electron temperatures.}
+\label{fig:GlobalKin}
+\end{figure}
+
+For the chemistry module to work, an input file must be provided which contains all the plasma species and reactions along with a set of parameters.
+
+My project is concerned with the use of air plasmas, therefore, I have begun to develop a reaction chemistry set for air for use in GlobalKin.
+However, as air is highly complex, involving many species and reactions, I have started with developing a set for pure nitrogen.
 
 Currently, the nitrogen chemistry set has 31 species and 207 reactions.
 
 
 \subsection{Nitrogen Chemistry Set}
+To begin the chemistry set, Vasco Guerra kindly shared with us his N$_2$:O$_2$ chemistry set used in \cite{Kutasi2016tuning}.
+This gives a good starting point for the nitrogen reactions and their rates.
+
 \subsubsection{Species}
-\todo{Make sure all the species are here with proper notation}
+
+The model so far consists of the species outlined in \textbf{table \ref{table:Species}}, in accordance with \cite{Kutasi2016tuning}.
+This includes ground state N, N$_2$, N$^+$, N$_2^+$ and N$_4^+$; and various excited states of N$_2$, N$_2^+$ and N.
+Being a molecules, nitrogen can exist in multiple vibrational states, meaning that the molecule can absorb energy into its bonds.
+For this chemistry set, the first 17 vibrational states of ground state nitrogen are included (N$_2$ (X, v = 0 - 17)).
+The N$_2 (a^1\Pi_g/a'^1\Sigma^?_u/w^1\Delta_u)$ states are also included, however, they are currently considered as a single state due to reasons discussed below.
+
+
 
 \begin{table}
 \caption{Species included in Nitrogen Chemistry Set}
@@ -179,11 +200,11 @@ Currently, the nitrogen chemistry set has 31 species and 207 reactions.
 \hline
 Species & States \\
 \hline\hline \hline
-N$_2$ & X (v = 0 - 17), A, B, B', C, a/a'/w\footnotemark  \\
+N$_2$ & $X^1\Sigma_g^+  (v = 0 - 17),  A^3\Sigma_u^+, B^3\Pi_g, B'^3\Sigma_u^-, C^3\Pi_u, (a^1\Pi_g/a'^1\Sigma^?_u/w^1\Delta_u)$\footnotemark  \\
 \hline
-N$_2^+$ & X, B \\
+N$_2^+$ & $X^2\Sigma_g^+, B^2\Sigma_u^+ $ \\
 \hline
-N & 4S, 2D, 2P \\
+N & $^4S, ^2D,  ^2P$ \\
 \hline
 N$^+$ & - \\
 \hline
@@ -193,60 +214,56 @@ N$_4^+$ & - \\
 \hline
 \end{tabular}
 \end{center}
-%\caption{$^1$ These three states are considered as a single state by GlobalKin.}
+\label{table:Species}
+\caption*{$^1$ These three states are considered as a single state by GlobalKin.}
 \end{table}
 
-%Included species included in Vasco: N, N$_2$, the first 17 vibrational states of ground state N$_2$ (N$_2$ (X, v = 0 - 17)), excited states of N$_2$ (N$_2$ (A), N$_2$ (B), N$_2$ (B'), N$_2$ (C), and a species N$_2$ (AP1S) which is the combination of N$_2$ (a), N$_2$ (a') and N$_2$ (w) (GlobalKin only contains cross sections for this collective species, rather than each of the three individual ones, therefore, for the time being, they have to be treated as one), excited N atoms (N ($^2$P) and N($^2$D) and ions N$_2$+, N$_4$+ and N$_2$ (B)+.
-\subsubsection{Electron Impact Reactions}
-Reaction rates involving electrons are highly dependent on electron energy, therefore, instead of specifying a specific rate for these reactions, the reaction cross section is used instead.
-This is then combined with the Boltzmann solver built in to GlobalKin to determine electron energies at specific time points through the simulation, meaning that the reaction rates are changing over time with electron energy.
 
-GlobalKin is good in that it already contains the electron impact cross sections for most reactions, and therefore, these are all called internally, as long as species are listed with names consistent with the GlobalKin code.
-For the time being, only electron impact reactions that are listed in GlobalKin have been included in the model. 
+\subsubsection{Reactions and Rates}
+
+A list of all the possible reactions occurring in the plasma needs to be provided in an input file to GlobalKin.
+Each reaction must be listed with it's rate or cross section, which can be found in literature.
+
+\subsubsection*{Electron Reactions}
+The rates of electron impact reactions are highly dependent on electron energy, therefore, as electron energies in the plasma change, the rates change accordingly.
+To account for this, electron impact cross sections are specified instead of a rate.
+The reaction cross section is the probability of a reaction occurring given an electron is at a particular energy.
+GlobalKin can then use the cross sections alongside the Boltzmann solver (which calculates the electron energy distribution function at regular intervals) to calculate the reaction rate at particular time points.
+
+GlobalKin contains the electron impact cross sections for most reactions internally and for the time being, only electron impact reactions with cross sections listed in GlobalKin have been included in this chemistry set.
 For this reason, the three N$_2$ states of a, a' and w, are all considered as a single state as there is only one cross section listed for all three of these species in GlobalKin.
 
-\subsubsection{Heavy Particle Reactions}
-Heavy particle reactions are less dependent on energy as they are heavier therefore do not change energy as much cos can't accelerate so much.
-These reaction rates can, therefore, be stated as constants, in the Arrhenius equation format.
-These reaction rates are taken from literature as shown in the reaction list.
+\subsubsection*{Heavy Particle Reactions}
+Heavy particles have a much more constant energy compared to electrons, due to their heavier mass. 
+For this reason, reaction rates can be stated as constants, in the Arrhenius equation format.
+These rates are found in the literature and the ones being used in the model can be found in the chemistry reaction set attached.
 
-In Guerra2004kinetic chemistry set but not in my set:
-C22, C23, C25, C28, C45, 
 
-\subsubsection{Vibration-Translation reactions}
+\subsubsection*{Vibration-Translation and Vibration-Vibration Reactions}
+
 Nitrogen has many vibrational states.
 For the purposes of this model, only the first 17 vibrational states of N$_2$ are included.
-The vibrational states of the molecule are important to include in the model as they can be involved in nitrogen dissociation \toref{Find reference that validates this!}.
-Therefore, as well as their production (through superelastic electron impact with ground state N$_2$, e.g. $e^- + N_2(v=0) \rightarrow N_2(v=1) + e^-$), their destruction is also important.
-Destruction of vibrational states occurs mainly through collisions with heavy particles, in particular, ground state N$_2$ and atomic N, in vibrational-translational (V-T) collisions, as follows:
+The vibrational states of the molecule are important to include in the model as they can be involved in nitrogen dissociation and gas heating. \toref{Find reference that validates this!}.
+Therefore, as well as their production (through electron impact with ground state N$_2$, e.g. $e^- + N_2(v=0) \rightarrow N_2(v=1) + e^-$), their destruction is also important.
+Destruction of vibrational states occurs mainly through collisions with heavy particles, in particular, ground state N$_2$ (\textbf{equation \ref{eqn:V-TN2}}) and atomic N (\textbf{equation \ref{eqn:V-TN}}), in vibrational-translational (V-T) collisions.
+
+
+
 \begin{equation}
 N_2(v=n) + N_2 (v=0) \rightarrow N_2(v=n-1) + N_2(v=0)
-\label{eqn:V-T}
+\label{eqn:V-TN2}
+\end{equation}
+\begin{equation}
+N_2(v=n) + N \rightarrow N_2(v=n') + N
+\label{eqn:V-TN}
 \end{equation}
 
-The rates for these reactions can mainly be found in the literature, in particular from \cite{Billing1979vv}.
-However, this paper only gives the rates for n=1-9 and n=20, as shown in \textbf{table \ref{table:BillingRates}}.
 
-\begin{table}
-\begin{center}
-\caption{Rates for V-T reactions from \cite{Billing1979vv}}
-\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c |}
-\hline
-n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 20 \\
-\hline
-Rate ($ \times 10^{-21}$) &0.8 & 1.8 & 3.1 & 5.0 & 7.4 & 11 & 16 & 26 & 38 & 1600 \\
-\hline
-\end{tabular}
-\label{table:BillingRates}
-\end{center}
-\end{table}
-
-Therefore, some fit needs to be applied to the data in order to get rates for when n=10-17.
-To do this, different fits were tested.
-Firstly, an exponential was fitted. 
-This was good for the first 9 data points, however, when the rate for n=20 was added, an exponential no longer worked.
-Therefore two approaches were tried - a linear fit between n=9 and n=20, and a 3rd degree polynomial fit for the whole data set.
-Graphs of these fits are shown in \textbf{figure \ref{fig:fits}}.
+The rates for N$_2$ - N$_2$ V-T reactions (\textbf{equation \ref{eqn:V-TN2}}) can be found in  \cite{Billing1979vv} for n = 1 - 9 \& 20.
+Therefore, it was necessary to fit the data to determine rate coefficients for n=10-17 required for the model.
+Exponential, 3rd degree polynomial and linear fits were tested.
+These are shown in \textbf{figures \ref{fig:fits}}.
+As shown in figures \ref{subfig:Exp} and \ref{subfig:ExpAll}, the exponential fit only worked when n=20 was excluded.
 
 To then check how much difference the fits made to the rates and therefore the densities of the vibrational states of N$_2$, the model was run twice, once with rates from the linear fit, and once with rates from the polynomial fit.
 From this, vibrational distribution functions (VDFs) were then drawn to see how different they were.
@@ -256,16 +273,37 @@ As shown in the figures, which fit is used makes no difference to either the VDF
 In \textbf{figure \ref{subfig:VDF}}, the VDFs for both fits are shown, however, only one line is visible as it is directly on top of the other.
 It was, therefore, decided that the linear fit data would be used for the model.
 
+
+
+%\begin{table}
+%\begin{center}
+%\caption{Rates for V-T reactions from \cite{Billing1979vv}}
+%\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c |}
+%\hline
+%n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 20 \\
+%\hline
+%Rate ($ \times 10^{-21}$) &0.8 & 1.8 & 3.1 & 5.0 & 7.4 & 11 & 16 & 26 & 38 & 1600 \\
+%\hline
+%\end{tabular}
+%\label{table:BillingRates}
+%\end{center}
+%\end{table}
+
+
+
+
 \begin{figure}
 \begin{subfigure}{0.5\textwidth}
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/ExpFit}
 \caption{Exponential Fit for n=1-9}
+\label{subfig:Exp}
 \end{center}
 \end{subfigure}
 \begin{subfigure}{0.5\textwidth}
 \includegraphics[width=\textwidth]{Figures/ExpFitAll}
 \caption{Exponential Fit for n=1-20}
+\label{subfig:ExpAll}
 \end{subfigure}
 \begin{subfigure}{0.5\textwidth}
 \includegraphics[width=\textwidth]{Figures/Linear}
@@ -294,6 +332,52 @@ It was, therefore, decided that the linear fit data would be used for the model.
 \caption{Graphs showing the vibrational distribution functions and atomic nitrogen densities when different fits are applied to V-T reaction rate data in \cite{Billing1979vv}}
 \label{fig:VDFandN}
 \end{figure}
+
+Rates for \textbf{equation \ref{eqn:V-TN}} were taken from \cite{Guerra1995non}.
+These rates are being used for the moment, however, Guerra \textit{et al} \cite{Guerra2004kinetic} suggest that they may be too high.
+Therefore, it is something to consider changing in time.
+
+Vibration-vibration reactions are also important reactions involving vibrational states of N$_2$.
+The generic V-V reaction is as follows:
+\begin{equation}
+N_2(v=w) + N_2 (v=n) \rightarrow N_2(v=w-1) + N_2(v=n+1)
+\label{eqn:V-V}
+\end{equation}
+
+Rates for \textbf{equation \ref{eqn:V-V}} were also taken from \cite{Billing1979vv}, with subsequent data fitting.
+For these rates, only a linear fit between n=9 and n=20 worked, therefore, this is how rates were determined for n=10-17.
+Fitting is shown in \textbf{\ref{fig:VVFit}}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{Figures/VVFitting}
+\caption{V-V Reaction Rate Fitting using data from \cite{Billing1979vv}}
+\label{fig:VVFit}
+\end{center}
+\end{figure}
+
+The impact of having both V-V and V-T reactions included in the model is shown by the comparison of the VDF both with and without V-V reactions.
+This is shown in \textbf{\ref{fig:VDFComp}}.
+At the moment, in the V-V reactions included in the chemistry set, w=1.
+\todo{I think V-V reactions can go from w = other numbers...!}
+
+\begin{figure}
+\begin{subfigure}{0.5\textwidth}
+\begin{center}
+\includegraphics[width=\textwidth]{Figures/VDF}
+\caption{Comparing the VDF with and without V-V reactions included in the reaction set}
+\label{fig:VDFComp}
+\end{center}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\begin{center}
+\includegraphics[width=0.65\textwidth]{Figures/NComp}
+\caption{Comparing the VDF with and without V-V reactions included in the reaction set}
+\label{fig:NComp}
+\end{center}
+\end{subfigure}
+\end{figure}
+
 
 \subsection{Cool N$_2$(A) graph}
 This is a cool graph shown in figure \ref{fig:N2A}
