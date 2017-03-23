@@ -12,6 +12,7 @@
 
 \newcommand{\todo}[1]{ \textcolor{red}{\bf{To Do:} #1}}
 \newcommand{\toref}[1]{ \textcolor{blue}{\bf{REFERENCE #1}}}
+\newcommand{\future}[1]{ \textcolor{green}{\bf{Future Direction: #1}}}
 
 %SetFonts
 
@@ -165,15 +166,6 @@ Finally, species densities are determined by an ordinary differential equation (
 \textbf{Figure \ref{fig:GlobalKin}} is a schematic for how GlobalKin works.
 For the chemistry module to work, an input file must be provided which contains all the plasma species and reactions along with a set of parameters.
 
-%As an add-on to GlobalKin, it is also possible to run a pathways analysis model on the data produced by GlobalKin.
-%
-%\subsection{Reaction Pathway Analysis}
-%
-%PumpKin is a pathways analysis tool, which can indicate the dominant reactions producing and destroying species in the plasma \cite{Markosyan2014pumpkin}.
-%Briefly, it works by taking a specified short timescale and identifying fast-lived species that are recycled on a timescale shorter that that.
-%Reactions containing these species are then combined so that there is no net production or destruction, and by doing so, reaction pathways are formed which can help the investigation of slower chemical dynamics, involving species of interest.
-%
-%As an example, using the data for the spatial distribution of OH presented in my last TAP meeting, the reaction pathways analysis can be carried out at different points along the channel to see how the mechanisms of OH production and destruction change along the channel.
 
 
 \begin{figure}
@@ -227,7 +219,6 @@ N$_4^+$ & - \\
 \caption*{$^1$ These three states are considered as a single state by GlobalKin.}
 \end{table}
 
-\subsubsection*{Vibrational Kinetics of Nitrogen}
 
 
 
@@ -251,7 +242,7 @@ For this reason, reaction rates can be stated as constants, in the Arrhenius equ
 These rates are found in the literature and the ones being used in the model can be found in the chemistry reaction set attached.
 
 
-\subsubsection*{Vibration-Translation and Vibration-Vibration Reactions}
+\subsubsection*{Vibrational Kinetics of Nitrogen}
 
 As shown above, nitrogen has many vibrational states, the first 17 of which are included in this chemistry set.
 Vibrational states are important to include in nitrogen models due to the fact that these states have an impact on the electron energy distribution function \cite{Guerra2004kinetic}.
@@ -268,24 +259,31 @@ e^- + N_2(v=1) \rightarrow N_2(v=0) + e^-
 \label{eqn:SuperelasticVibrational}
 \end{equation}
 
-As well as for their impact on the EEDF, vibrational states can also have an impact on the dissociation of N$_2$, and on gas heating in the plasma \toref{Find a reference... Is this true?!}.
+As well as for their impact on the EEDF, vibrational states can also have an impact on the dissociation of N$_2$, and on gas heating in the plasma \toref{Find a reference}.
 For this reason it is important to include the production and destruction mechanisms of vibrational states.
-As well as superelastic electron collisions, shown in equation \ref{eqn:SuperelasticVibrational}, vibrationally excited states of nitrogen can also be destroyed by collisions with heavy particles, in particular ground state N$_2$ and N, as shown in equations \ref{eqn:V-TN2} and \ref{eqn:V-TN}, respectively.
+As well as superelastic electron collisions, shown in equation \ref{eqn:SuperelasticVibrational}, vibrationally excited states of nitrogen can also be destroyed by collisions with heavy particles N$_2$ and N, in vibration-translation (V-T), as shown in equations \ref{eqn:V-TN2} and \ref{eqn:V-TN}, respectively.
 
 \begin{equation}
 N_2(v=n) + N_2 (v=0) \rightarrow N_2(v=n-1) + N_2(v=0)
 \label{eqn:V-TN2}
 \end{equation}
 \begin{equation}
-N_2(v=n) + N \rightarrow N_2(v=n') + N
+N_2(v=n) + N \rightarrow N_2(v=n-1) + N
 \label{eqn:V-TN}
+\end{equation}
+As well as V-T reactions, vibrationally excited N$_2$ can also be destroyed through vibration-vibration (V-V) collisions.
+The general equation for this is as follows:
+
+\begin{equation}
+N_2(v=w) + N_2 (v=n) \rightarrow N_2(v=w-1) + N_2(v=n+1)
+\label{eqn:V-V}
 \end{equation}
 
 Dissociation of N$_2$ is also influenced by the presence of vibrational states of N$_2$, however, this tends to be at the higher vibrational states (e.g. n = 45), which are not included in this model at the moment. 
 The importance of these higher vibrational states will need to be investigated and could be added in at a later date \cite{Guerra2004kinetic}.
 
 
-\paragraph{Rates of Reactions Involving Vibrational States}
+\subsubsection{Rates of Reactions Involving Vibrational States}
 
 As with other heavy particle reactions, the rates for these reactions are found in the literature.
 
@@ -369,12 +367,6 @@ Rates for N$_2$-N V-T reactions \textbf{equation \ref{eqn:V-TN}} were taken from
 These rates are being used for the moment, however, Guerra \textit{et al} \cite{Guerra2004kinetic} suggest that they may be too high.
 Therefore, it is something to consider changing in time.
 
-Vibration-vibration reactions are also important reactions involving vibrational states of N$_2$.
-The generic V-V reaction is as follows:
-\begin{equation}
-N_2(v=w) + N_2 (v=n) \rightarrow N_2(v=w-1) + N_2(v=n+1)
-\label{eqn:V-V}
-\end{equation}
 
 Rates for V-V reactions where n = 1 - 9 and n = 20 (\textbf{equation \ref{eqn:V-V}}) were also taken from \cite{Billing1979vv}, with subsequent data fitting.
 For these rates, only a linear fit between n = 9 and n = 20 worked, therefore, this is how rates were determined for n = 10 - 17.
@@ -394,15 +386,17 @@ The VDFs are shown in figure \ref{fig:VDFComp}.
 From this, it can be seen that the whether or not V-T reactions are included have very little impact on the VDF (red and green lines).
 However, there is slight divergence between the two at the highest vibrational states.
 This not surprising as it is thought that V-T reactions are thought to be most important at higher vibrational states \cite{Guerra2004kinetic} \todo{check the paper for this!}
+\future{Check to look at influence on gas temperature}
 
 V-V reactions, however, change the shape of the VDF more obviously.
 The shape seems to change quite significantly, particularly at the lowest vibrational states.
-This is interesting as it suggests that I need to add in more of these reactions. \todo{Check and finish this sentence...!!}
-
-The impact of having both V-V and V-T reactions included in the model is shown by the comparison of the VDF both with and without V-V reactions.
-This is shown in \textbf{\ref{fig:VDFComp}}.
-At the moment, in the V-V reactions included in the chemistry set, w=1.
-\todo{I think V-V reactions can go from w = other numbers...!}
+This is interesting as it suggests it may be important to add in more of these reactions.
+Currently only V-V reactions where $w=1$ are included, though this result suggests it may be important to add more V-V reactions where $w > 1$.
+%
+%The impact of having both V-V and V-T reactions included in the model is shown by the comparison of the VDF both with and without V-V reactions.
+%This is shown in \textbf{\ref{fig:VDFComp}}.
+%At the moment, in the V-V reactions included in the chemistry set, w=1.
+%\todo{I think V-V reactions can go from w = other numbers...!}
 
 \begin{figure}
 \begin{subfigure}{0.5\textwidth}
@@ -422,36 +416,89 @@ At the moment, in the V-V reactions included in the chemistry set, w=1.
 \end{figure}
 
 
-%\subsection{Cool N$_2$(A) graph}
-%This is a cool graph shown in figure \ref{fig:N2A}
-%
-%\begin{figure}
-%\includegraphics[width=\textwidth]{Figures/N2Adependence}
-%\caption{Cool Graph}
-%\label{fig:N2A}
-%\end{figure}
+\subsection{Model Outcomes and Reaction Pathways Analysis}
+
+As an example of how the model will be useful alongside experiments in the future, figure \ref{fig:ExamplePowerVar} shows how species densities can be predicted by the model, when plasma parameters are altered.
+Specifically, using the chemistry set introduced above, densities of atomic nitrogen and the excited state N$_2$(A) are shown for different plasma powers.
+Interestingly, the model shows that as plasma power is increased, the density of atomic nitrogen increases, whereas the density of the excited state of N$_2$, N$_2$(A) doesn't change.
+This gives an indication that the two species could be controlled independently.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{Figures/ExampleDensities}
+\label{fig:ExamplePowerVar}
+\caption{Power Variation}
+\end{figure}
 
 
-\section{Plasma Sources}
+As an extension of GlobalKin, there is also a reaction pathways analysis tool, PumpKin \cite{Markosyan2014pumpkin}, which is capable of indicating the dominant reaction pathways causing the production and destruction of species.
+Briefly, it works by taking a specified short timescale and identifying fast-lived species that are recycled on a timescale shorter that that.
+Reactions containing these species are then combined so that there is no net production or destruction, and by doing so, reaction pathways are formed which can help the investigation of slower chemical dynamics, involving species of interest.
+As an example, PumpKin analysis was performed on the production of N in the power variation shown in figure \ref{fig:ExamplePowerVar}, to look at the main N production pathways and see if this changes with power variation.
+The results of this analysis are shown in figure \ref{fig:pumpkin}.
+The results show that there are 4 reaction pathways responsible for N production:
+\begin{equation}
+N_2(X, v=10) + N_2(X, v=10) \rightarrow N_2 + N + N
+\label{eqn1}
+\end{equation}
+\begin{equation}
+N(^2P) + N_2 \rightarrow N + N_2
+\label{eqn2}
+\end{equation}
+\begin{equation}
+N_2(X, v=11) + N_2(X, v=11) \rightarrow N_2 + N + N
+\label{eqn3}
+\end{equation}
+\begin{equation}
+e^- + N_2 \rightarrow  N + N + e^-
+\label{eqn4}
+\end{equation}
+
+Interestingly, as the plasma power is increased, the contribution to N production by equation \ref{eqn1} and, to a lesser extent equation \ref{eqn3} increases, whereas the contribution by equations \ref{eqn2} and \ref{eqn4} decreases.
+This gives information about the reaction dynamics that is not available experimentally.
 
 
-When considering the plasma source to build for wound treatment, it would be of use to develop the source in a way that it is possible to model it well.
-For example, 
+\begin{figure}
+\includegraphics[width=\textwidth]{Figures/N_Production_PumpKin}
+\label{fig:pumpkin}
+\caption{PumpKin example}
+\end{figure}
+
+It is important to note that these simulations are currently not benchmarked, therefore, the model is not predictive as yet.
+However, the main step in the coming months is to begin the benchmarking process in order to check both that the chemistry is working as it should and that the results of the model are starting to agree with experimental results.
+
+\section{Future Directions}
+\subsection{Simulations}
+The future directions for the simulations are mainly relating to model refinement.
+For example, it is necessary to investigate whether there are reactions missing from the reaction set that need to be added.
+For instance, there may be further reactions involving vibrational states that are currently not included (such as V-V reactions where $w > 1$), but are required to make the reaction chemistry set realistic.
+To achieve this, further literature search is required to understand the importance of other reactions involving vibrational states of N$_2$.
+
+Alongside this, experimental benchmarking of the model is required to see how well simulated species densities match experimental densities.
+Therefore, the type of plasma source to be used needs to be decided on.
+
+\subsection{Plasma Source}
+
+When considering the plasma source to build for wound treatment, it would be of use to develop the source in a way that it is possible to model it well using GlobalKin.
+There are multiple different geometries that have been used for air plasmas, such as plasma jets \cite{Pei2012inactivation, Chen2009blood, Walsh2011portable}, corona discharges \cite{Dobrynin2011inactivation} and dielectric barrier discharges (DBDs).
+Whilst all these different geometries have their advantages and disadvantages, one major disadvantage of the likes of jets and corona discharges is that it isn't really possible to model them in GlobalKin.
+This is due to two reasons.
+Firstly, the plasma volume is less well defined and secondly, the plasmas are often not very uniform and often filamentary.
+Therefore, a DBD configuration might be the most appropriate for the initial experimental stages of the project, even if the design requires changing in the future so that it is better for application to actual wounds.
 
 
-Here I talk about geometries that I could use, specifically review air plasmas.
-\subsection{Geometry}
 \subsubsection{Dielectric Barrier Discharge}
 Dielectric barrier discharges are so called due to having a dielectric barrier on one of the electrodes to limit the current flow and prevent the glow-to-arc transition. 
 They can operate at atmospheric pressure using air and don't necessarily require a gas flow \cite{Fridman2013plasmamedicine}
 They have been used extensively for applications such as ozone production and polymer treatment and more recently, for biomedical applications \cite{Fridman2013plasmamedicine, Brehmer2015alleviation}.
-A typical DBD setup is shown in figure \ref{fig:DBD} \todo{Add a figure showing a DBD setup}.
+A typical DBD setup used to treat a biological sample is shown in figure \ref{fig:DBD}.
 DBDs have shown to be effective for bacterial killing and other biomedical applications such as blood clotting, and there have been clinical trials into their effectiveness for wound healing \cite{Daeschlein2012in, Fridman2006blood, Brehmer2015alleviation}. 
 
-DBDs have to be operated using alternating current.
 
 
-\todo{Speak with Jerome about air plasma designs. Something Sandra built to try with his nanosecond supply??}
+%DBDs have to be operated using alternating current.
+
+
+%\todo{Speak with Jerome about air plasma designs. Something Sandra built to try with his nanosecond supply??}
 
 
 \begin{figure}
@@ -461,53 +508,29 @@ DBDs have to be operated using alternating current.
 \label{fig:DBD}
 \end{figure}
 
-DBDs have been shown in laboratory conditions to be effective for bacterial killing \cite{Daeschlein2012in, Fridman2006blood}.
-An air DBD, PlasmaDerm has been tested on chronic ulcers in a clinical trial, though the results are not overly promising \cite{Brehmer2015alleviation}, as plasma induced killing of wound colonising bacteria was not long lasting and there did not appear to be any acceleration in wound healing in the plasma treated group compared to the controls.
-The device operates at AC voltage pulses with amplitudes $>$10 kV and a power density of 120 mW/cm\textsuperscript{2} \cite{Brehmer2015alleviation}.
+%DBDs have been shown in laboratory conditions to be effective for bacterial killing \cite{Daeschlein2012in, Fridman2006blood}.
+%An air DBD, PlasmaDerm has been tested on chronic ulcers in a clinical trial, though the results are not overly promising \cite{Brehmer2015alleviation}, as plasma induced killing of wound colonising bacteria was not long lasting and there did not appear to be any acceleration in wound healing in the plasma treated group compared to the controls.
+%The device operates at AC voltage pulses with amplitudes $>$10 kV and a power density of 120 mW/cm\textsuperscript{2} \cite{Brehmer2015alleviation}.
 
 
 
-\cite{Fridman2007comparison} looks at direct and indirect plasma treatment. Using DBD with and without mesh/airflow to try and separate out the roles of ions and reactive species.
-Both use atmospheric air as the gas.
-Both operate at 35 kV, 12 kHz frequency and power density of 0.8 W/cm\textsuperscript{3}.
+%\cite{Fridman2007comparison} looks at direct and indirect plasma treatment. Using DBD with and without mesh/airflow to try and separate out the roles of ions and reactive species.
+%Both use atmospheric air as the gas.
+%Both operate at 35 kV, 12 kHz frequency and power density of 0.8 W/cm\textsuperscript{3}.
 
-In terms of operation, there was a study investigating pulsing of DBD, using both micro- and nanosecond pulses. 
+In terms of operation, there was a study investigating pulsing of DBD, using both micro- and nanosecond pulses, in particular, investigating the homogeneity of the plasma produced. 
 It was found that nanosecond pulsing gave a more homogenous plasma, that would ignite more uniformly over a non-uniform surface.
 Specifically, patterned (i.e. not flat) agar was used as the target and it was seen that with microsecond pulses, the plasma was more filamentary and some areas didn't ignite at all \cite{Ayan2009application}. 
 However, using the nanosecond pulses, the plasma was more uniform over the entire surface.
 This is preferable when considering wound treatments, as the wound bed is not smooth.
-Further to this, nanosecond pulsed DBD was found to be more effective for bacterial killing \cite{Ayan2008nanosecond}
+Further to this, nanosecond pulsed DBD was found to be more effective for bacterial killing \cite{Ayan2008nanosecond}.
 
-
-\subsubsection{Floating-Electrode Dielectric Barrier Discharge}
-Similar to DBD, the FE-DBD can be used whereby one of the electrodes can be replaced with anything with a sufficiently high charge storage capacity, a so-called, floating electrode (FE). 
-Biological samples and skin are able to do this due to their high water content {\cite{Fridman2006blood}}.
-Good diagrams of the electrodes are shown in {\cite{Fridman2006blood}}.
-Has been shown that FE-DBD can accelerate the coagulation process in the blood. It seems to catalyse the physiological process of clotting rather than exerting a physical influence.
-This is operated at 20 kV at pulsed and continuous frequency.
-
-\subsubsection{Corona Discharge}
-\cite{Dobrynin2011inactivation} - inactivation of bacteria using corona discharge.
-
-\subsubsection{Plasma Jets}
-\cite{Pei2012inactivation} - handheld air plasma 'Plasma Flashlight'
-\cite{Chen2009blood} - Blood clotting trial using plasma jet
-\cite{Walsh2011portable} - A portable air plasma ** Looks interesting!
-
-
-\subsubsection{Voltages, Waveforms and Power etc}
-
-Nanosecond pulsing.
-Why? What is the point? What does it mean? Why is it necessary for air and less so for noble gas plasmas?
-
-
-
-\section{Future Work}
-\begin{itemize}
-\item Add to chemistry set by adding in O$_2$. For now, I am only going to consider dry air, therefore only N$_2$:O$_2$ gas mixture.
-\item EXPERIMENTS!!!!
-\end{itemize}
-
+%
+%\subsubsection{Floating-Electrode Dielectric Barrier Discharge}
+%Similar to DBD, the FE-DBD can be used whereby one of the electrodes can be replaced with anything with a sufficiently high charge storage capacity, a so-called, floating electrode (FE). 
+%Biological samples and skin are able to do this due to their high water content {\cite{Fridman2006blood}}.
+%Good diagrams of the electrodes are shown in {\cite{Fridman2006blood}}.
+%Has been shown that FE-DBD can accelerate the coagulation process in the blood. It seems to catalyse the physiological process of clotting rather than exerting a physical influence.
 
 
 \scriptsize
