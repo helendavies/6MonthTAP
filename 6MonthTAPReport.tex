@@ -2,7 +2,7 @@
 \usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
 \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
 %\geometry{landscape}                		% Activate for rotated page geometry
-%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
 								% TeX will automatically convert eps --> pdf in pdflatex		
 \usepackage{amssymb}
@@ -26,8 +26,8 @@
 \maketitle
 
 \section{Wounds and Plasma Treatment}
-Plasmas are rapidly extending into the field of medicine, with potential applications for wound healing \cite{Haertel2014nonthermal, Isbary2013nonthermal}, cancer treatment \cite{Hirst2016low, Fridman2007floating}, coagulation \cite{Fridman2006blood, Chen2009blood} and sterilisation \cite{Fridman2006blood, Laroussi2002nonthermal}.
-Applications such as there pertain to plasmas ability to interact with living biological substrates such as bacteria, both in planktonic and biofilm forms \cite{Joshi2010control, Pei2012inactivation, Ziuzina2015cold} and eukaryotic, mammalian cells \cite{Haertel2014nonthermal}.
+Plasmas are rapidly extending into the field of medicine, with potential application in wound healing \cite{Haertel2014nonthermal, Isbary2013nonthermal}, cancer treatment \cite{Hirst2016low, Fridman2007floating}, coagulation \cite{Fridman2006blood, Chen2009blood} and sterilisation \cite{Fridman2006blood, Laroussi2002nonthermal}.
+Applications such as these pertain to plasmas ability to interact with living biological substrates such as bacteria, both in planktonic and biofilm forms \cite{Joshi2010control, Pei2012inactivation, Ziuzina2015cold} and eukaryotic, mammalian cells \cite{Haertel2014nonthermal}.
 For sterilisation applications, the properties of low temperature plasma, in particular the low temperature and ability to operate at atmospheric pressure, allow their use both on equipment surfaces \cite{Laroussi2002nonthermal} and also directly on biological tissue, for example chronically infected wounds \cite{Haertel2014nonthermal, Isbary2013nonthermal, Fridman2006blood}.
 
 This project is concerned with wound healing and how low temperature air plasma can be developed to allow treatment of wounds.
@@ -78,7 +78,6 @@ These are often result in mispairing of DNA bases and subsequent transversion mu
 For example, a common lesion formed in DNA is 8-OH-Gua (a guanine base that has been modified through attack by $\cdot$OH), which wrongly pairs with adenine and thus results in a G $\rightarrow$ T transversion mutation \cite{Dizdaroglu2012oxidatively}.
 It readily reacts with nucleotide bases, which allows for frequent mutations 
 DNA attack can cause mutations. \cite{PhamHuy2008free}.
-
 
 
 
@@ -147,7 +146,7 @@ However, what I find unclear is how they know there was only NO in the gas, sure
 
 \subsubsection{Electric Fields}
 
-Normal plasma membrances have a potential difference across them, due to the movement of ions across the membrane.
+Normal plasma membranes have a potential difference across them, due to the movement of ions across the membrane.
 When epithelium is broken through wounding, the ion currents are disrupted and an electric field is established.
 There is evidence to suggest that this electric field helps guide the migration of epithelial cells during healing \cite{Zhao2009electrical}.
 Following this, there have been studies into the effects of using electric fields for the promotion of wound healing \cite{Thakral2013electrical, Messerli2011extracellular}.
@@ -157,13 +156,25 @@ Lab trials show the importance of electrical currents/fields for wound healing, 
 \todo{E field strengths?? Applied voltages?? Comparison to plasmas}
 %The threshold field strength noticeable by cells is 4500 times smaller than that required for electroporation of skeletal muscle \cite{Messerli2011extracellular}.
 
-\section{Work to Date: Plasma Modelling \& Benchmarking}
+\section{Work to Date: Plasma Simulations}
 
 For the last few months I have been continuing to work on plasma simulations, using GlobalKin.
-As detailed in my previous TAP report, GlobalKin is a 0 dimensional global chemistry plasma model that calculates the time evolution of plasma species, given specific geometry and plasma parameters. \cite{Stafford2004O2}.
-To do this, it has an internal Boltzmann solver for calculating electron energy distribution functions over time which it then combines with a reaction chemistry module which outlines all the species and reactions taking place in the plasma.
-Finally, species densities are determined by an ordinary differential equation (ODE) solver to solve the ODEs formed by the reaction chemistry module.
+As detailed in my previous TAP report, GlobalKin is a 0 dimensional global chemistry plasma model that calculates the time evolution of plasma species, given specific geometry and plasma parameters \cite{Stafford2004O2}.
+To do this, it has an internal Boltzmann solver for calculating electron energy distribution functions over time which it then combines with a reaction chemistry module outlining all the species and reactions taking place in the plasma.
+Finally, species densities are determined by an ordinary differential equation (ODE) solver to solve ODEs for species densities formed by the reaction chemistry module.
 \textbf{Figure \ref{fig:GlobalKin}} is a schematic for how GlobalKin works.
+For the chemistry module to work, an input file must be provided which contains all the plasma species and reactions along with a set of parameters.
+
+%As an add-on to GlobalKin, it is also possible to run a pathways analysis model on the data produced by GlobalKin.
+%
+%\subsection{Reaction Pathway Analysis}
+%
+%PumpKin is a pathways analysis tool, which can indicate the dominant reactions producing and destroying species in the plasma \cite{Markosyan2014pumpkin}.
+%Briefly, it works by taking a specified short timescale and identifying fast-lived species that are recycled on a timescale shorter that that.
+%Reactions containing these species are then combined so that there is no net production or destruction, and by doing so, reaction pathways are formed which can help the investigation of slower chemical dynamics, involving species of interest.
+%
+%As an example, using the data for the spatial distribution of OH presented in my last TAP meeting, the reaction pathways analysis can be carried out at different points along the channel to see how the mechanisms of OH production and destruction change along the channel.
+
 
 \begin{figure}
 \includegraphics[width=\textwidth]{Figures/GlobalKinDiagram}
@@ -171,12 +182,10 @@ Finally, species densities are determined by an ordinary differential equation (
 \label{fig:GlobalKin}
 \end{figure}
 
-For the chemistry module to work, an input file must be provided which contains all the plasma species and reactions along with a set of parameters.
 
-My project is concerned with the use of air plasmas, therefore, I have begun to develop a reaction chemistry set for air for use in GlobalKin.
-However, as air is highly complex, involving many species and reactions, I have started with developing a set for pure nitrogen.
 
-Currently, the nitrogen chemistry set has 31 species and 207 reactions.
+My project is concerned with the use of air plasmas, therefore, the aim is to develop an air reaction chemistry set for use in GlobalKin.
+However, as air is highly complex, involving many species and reactions, I have started with developing a set for pure nitrogen plasmas, which currently includes 31 species and 207 reactions.
 
 
 \subsection{Nitrogen Chemistry Set}
@@ -187,7 +196,7 @@ This gives a good starting point for the nitrogen reactions and their rates.
 
 The model so far consists of the species outlined in \textbf{table \ref{table:Species}}, in accordance with \cite{Kutasi2016tuning}.
 This includes ground state N, N$_2$, N$^+$, N$_2^+$ and N$_4^+$; and various excited states of N$_2$, N$_2^+$ and N.
-Being a molecules, nitrogen can exist in multiple vibrational states, meaning that the molecule can absorb energy into its bonds.
+Being a molecule, nitrogen can absorb energy into its bonds and is said to exist in multiple vibrational states.
 For this chemistry set, the first 17 vibrational states of ground state nitrogen are included (N$_2$ (X, v = 0 - 17)).
 The N$_2 (a^1\Pi_g/a'^1\Sigma^?_u/w^1\Delta_u)$ states are also included, however, they are currently considered as a single state due to reasons discussed below.
 
@@ -218,6 +227,9 @@ N$_4^+$ & - \\
 \caption*{$^1$ These three states are considered as a single state by GlobalKin.}
 \end{table}
 
+\subsubsection*{Vibrational Kinetics of Nitrogen}
+
+
 
 \subsubsection{Reactions and Rates}
 
@@ -241,13 +253,24 @@ These rates are found in the literature and the ones being used in the model can
 
 \subsubsection*{Vibration-Translation and Vibration-Vibration Reactions}
 
-Nitrogen has many vibrational states.
-For the purposes of this model, only the first 17 vibrational states of N$_2$ are included.
-The vibrational states of the molecule are important to include in the model as they can be involved in nitrogen dissociation and gas heating. \toref{Find reference that validates this!}.
-Therefore, as well as their production (through electron impact with ground state N$_2$, e.g. $e^- + N_2(v=0) \rightarrow N_2(v=1) + e^-$), their destruction is also important.
-Destruction of vibrational states occurs mainly through collisions with heavy particles, in particular, ground state N$_2$ (\textbf{equation \ref{eqn:V-TN2}}) and atomic N (\textbf{equation \ref{eqn:V-TN}}), in vibrational-translational (V-T) collisions.
+As shown above, nitrogen has many vibrational states, the first 17 of which are included in this chemistry set.
+Vibrational states are important to include in nitrogen models due to the fact that these states have an impact on the electron energy distribution function \cite{Guerra2004kinetic}.
+This is due to there being a high probability of electrons colliding with N$_2$ molecules and exciting them to different vibrational states (equation \ref{eqn:ElectronVibration}), causing electron energy losses.
+\begin{equation}
+e^- + N_2(v=0) \rightarrow N_2(v=1) + e^-
+\label{eqn:ElectronVibration}
+\end{equation}
 
+Also, superelastic collisions of electrons with vibrational states (equation \ref{eqn:SuperelasticVibrational}) cause electrons to gain energy and is a process responsible for high energy electrons \cite{Guerra2004kinetic}. \todo{check!}
 
+\begin{equation}
+e^- + N_2(v=1) \rightarrow N_2(v=0) + e^-
+\label{eqn:SuperelasticVibrational}
+\end{equation}
+
+As well as for their impact on the EEDF, vibrational states can also have an impact on the dissociation of N$_2$, and on gas heating in the plasma \toref{Find a reference... Is this true?!}.
+For this reason it is important to include the production and destruction mechanisms of vibrational states.
+As well as superelastic electron collisions, shown in equation \ref{eqn:SuperelasticVibrational}, vibrationally excited states of nitrogen can also be destroyed by collisions with heavy particles, in particular ground state N$_2$ and N, as shown in equations \ref{eqn:V-TN2} and \ref{eqn:V-TN}, respectively.
 
 \begin{equation}
 N_2(v=n) + N_2 (v=0) \rightarrow N_2(v=n-1) + N_2(v=0)
@@ -258,15 +281,24 @@ N_2(v=n) + N \rightarrow N_2(v=n') + N
 \label{eqn:V-TN}
 \end{equation}
 
+Dissociation of N$_2$ is also influenced by the presence of vibrational states of N$_2$, however, this tends to be at the higher vibrational states (e.g. n = 45), which are not included in this model at the moment. 
+The importance of these higher vibrational states will need to be investigated and could be added in at a later date \cite{Guerra2004kinetic}.
 
-The rates for N$_2$ - N$_2$ V-T reactions (\textbf{equation \ref{eqn:V-TN2}}) can be found in  \cite{Billing1979vv} for n = 1 - 9 \& 20.
-Therefore, it was necessary to fit the data to determine rate coefficients for n=10-17 required for the model.
+
+\paragraph{Rates of Reactions Involving Vibrational States}
+
+As with other heavy particle reactions, the rates for these reactions are found in the literature.
+
+
+The rates for N$_2$-N$_2$ V-T reactions (\textbf{equation \ref{eqn:V-TN2}}) can be found in  \cite{Billing1979vv} for n = 1 - 9 \& 20.
+Therefore, it was necessary to fit the data to determine rate coefficients for n = 10 - 17 required for the model.
 Exponential, 3rd degree polynomial and linear fits were tested.
 These are shown in \textbf{figures \ref{fig:fits}}.
 As shown in figures \ref{subfig:Exp} and \ref{subfig:ExpAll}, the exponential fit only worked when n=20 was excluded.
 
-To then check how much difference the fits made to the rates and therefore the densities of the vibrational states of N$_2$, the model was run twice, once with rates from the linear fit, and once with rates from the polynomial fit.
+To then check how much difference the fits made to the rates and, therefore, the densities of the vibrational states of N$_2$, the model was run twice, once with rates from the linear fit, and once with rates from the polynomial fit.
 From this, vibrational distribution functions (VDFs) were then drawn to see how different they were.
+TO draw the VDF, the vibrational state densities are first normalised to the ground state density and then the VDF shows the populations of vibrationally excited N$_2$ compared to the ground state.
 Alongside this, the density of atomic nitrogen was also determined to see how this was affected.
 The results are shown in \textbf{figure \ref{fig:VDFandN}}.
 As shown in the figures, which fit is used makes no difference to either the VDF or the atomic nitrogen density.
@@ -333,7 +365,7 @@ It was, therefore, decided that the linear fit data would be used for the model.
 \label{fig:VDFandN}
 \end{figure}
 
-Rates for \textbf{equation \ref{eqn:V-TN}} were taken from \cite{Guerra1995non}.
+Rates for N$_2$-N V-T reactions \textbf{equation \ref{eqn:V-TN}} were taken from \cite{Guerra1995non}.
 These rates are being used for the moment, however, Guerra \textit{et al} \cite{Guerra2004kinetic} suggest that they may be too high.
 Therefore, it is something to consider changing in time.
 
@@ -344,8 +376,8 @@ N_2(v=w) + N_2 (v=n) \rightarrow N_2(v=w-1) + N_2(v=n+1)
 \label{eqn:V-V}
 \end{equation}
 
-Rates for \textbf{equation \ref{eqn:V-V}} were also taken from \cite{Billing1979vv}, with subsequent data fitting.
-For these rates, only a linear fit between n=9 and n=20 worked, therefore, this is how rates were determined for n=10-17.
+Rates for V-V reactions where n = 1 - 9 and n = 20 (\textbf{equation \ref{eqn:V-V}}) were also taken from \cite{Billing1979vv}, with subsequent data fitting.
+For these rates, only a linear fit between n = 9 and n = 20 worked, therefore, this is how rates were determined for n = 10 - 17.
 Fitting is shown in \textbf{\ref{fig:VVFit}}.
 
 \begin{figure}
@@ -356,6 +388,17 @@ Fitting is shown in \textbf{\ref{fig:VVFit}}.
 \end{center}
 \end{figure}
 
+The impact of including these V-V and V-T reactions was then tested by comparing the VDF when both reactions were included compared to only one or the other. 
+The rest of the reaction set remained unchanged.
+The VDFs are shown in figure \ref{fig:VDFComp}.
+From this, it can be seen that the whether or not V-T reactions are included have very little impact on the VDF (red and green lines).
+However, there is slight divergence between the two at the highest vibrational states.
+This not surprising as it is thought that V-T reactions are thought to be most important at higher vibrational states \cite{Guerra2004kinetic} \todo{check the paper for this!}
+
+V-V reactions, however, change the shape of the VDF more obviously.
+The shape seems to change quite significantly, particularly at the lowest vibrational states.
+This is interesting as it suggests that I need to add in more of these reactions. \todo{Check and finish this sentence...!!}
+
 The impact of having both V-V and V-T reactions included in the model is shown by the comparison of the VDF both with and without V-V reactions.
 This is shown in \textbf{\ref{fig:VDFComp}}.
 At the moment, in the V-V reactions included in the chemistry set, w=1.
@@ -364,14 +407,14 @@ At the moment, in the V-V reactions included in the chemistry set, w=1.
 \begin{figure}
 \begin{subfigure}{0.5\textwidth}
 \begin{center}
-\includegraphics[width=\textwidth]{Figures/VDF}
+\includegraphics[width=\textwidth]{Figures/Comparison_VV_VT_VDF}
 \caption{Comparing the VDF with and without V-V reactions included in the reaction set}
 \label{fig:VDFComp}
 \end{center}
 \end{subfigure}
 \begin{subfigure}{0.5\textwidth}
 \begin{center}
-\includegraphics[width=0.65\textwidth]{Figures/NComp}
+\includegraphics[width=\textwidth]{Figures/Comparison_VV_VT_Ndensity}
 \caption{Comparing the VDF with and without V-V reactions included in the reaction set}
 \label{fig:NComp}
 \end{center}
@@ -379,17 +422,19 @@ At the moment, in the V-V reactions included in the chemistry set, w=1.
 \end{figure}
 
 
-\subsection{Cool N$_2$(A) graph}
-This is a cool graph shown in figure \ref{fig:N2A}
-
-\begin{figure}
-\includegraphics[width=\textwidth]{Figures/N2Adependence}
-\caption{Cool Graph}
-\label{fig:N2A}
-\end{figure}
+%\subsection{Cool N$_2$(A) graph}
+%This is a cool graph shown in figure \ref{fig:N2A}
+%
+%\begin{figure}
+%\includegraphics[width=\textwidth]{Figures/N2Adependence}
+%\caption{Cool Graph}
+%\label{fig:N2A}
+%\end{figure}
 
 
 \section{Plasma Sources}
+
+
 When considering the plasma source to build for wound treatment, it would be of use to develop the source in a way that it is possible to model it well.
 For example, 
 
