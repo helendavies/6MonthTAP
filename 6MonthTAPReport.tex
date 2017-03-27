@@ -26,25 +26,50 @@
 \begin{document}
 \maketitle
 
-\section{Wounds and Plasma Treatment}
-Plasmas are rapidly extending into the field of medicine, with potential application in wound healing \cite{Haertel2014nonthermal, Isbary2013nonthermal}, cancer treatment \cite{Hirst2016low, Fridman2007floating}, coagulation \cite{Fridman2006blood, Chen2009blood} and sterilisation \cite{Fridman2006blood, Laroussi2002nonthermal}.
-Applications such as these pertain to plasmas ability to interact with living biological substrates such as bacteria, both in planktonic and biofilm forms \cite{Joshi2010control, Pei2012inactivation, Ziuzina2015cold} and eukaryotic, mammalian cells \cite{Haertel2014nonthermal}.
+\section{Motivation}
+\subsection{Wounds}
+
+Wounds and their management are an issue both in the UK and globally \cite{Posnett2008the}.
+Methods of accelerating wound healing to decrease infection risk are sought, especially in developing countries where wound infection rates are extremely high \cite{Kihla2014risk}. 
+Common wound-infecting pathogens such as \textit{Staphylococcus aureus} and \textit{pseudomonas aeruginosa} \cite{Church2006burn, Bowler2001wound} are becoming increasingly resistant to antibiotics, therefore, new wound treatments appropriate for the healthcare budgets of both developed and developing countries are required \cite{Chambers2009waves, Godebo2013multidrug, Howell2005a}.
+One technique under investigation is low temperature plasma (LTP), which has shown promise for both bacterial killing and wound healing promotion \cite{Kong2009plasma, Kramer2013suitability, Isbary2012successful, Isbary2010a}.
+
+\subsection{Low Temperature Plasmas in Biomedicine}
+Low temperature plasmas (LTP) are weakly ionised plasmas, existing far from thermodynamic equilibrium.
+This results in a plasma that has an overall cool temperature, which shouldn't cause any thermal damage on direct application to biological tissues.
+
+The field of 'plasma medicine' is a rapidly expanding one, with LTP use and research increasing in various applications such as wound healing \cite{Haertel2014nonthermal, Isbary2013nonthermal}, cancer treatment \cite{Hirst2016low, Fridman2007floating}, coagulation \cite{Fridman2006blood, Chen2009blood} and sterilisation \cite{Fridman2006blood, Laroussi2002nonthermal}.
+%The interest in LTP for biomedical applications arises from the ability of plasma-produced species being able to influence biological functioning in a range of substrates.
+%For example, LTP has been shown to be effective in inactivating bacteria in both planktonic and biofilm forms \cite{Joshi2010control, Pei2012inactivation, Ziuzina2015cold}, whereas it can also have positive influences on eukaryotic cells \cite{Haertel2014nonthermal}.
+%The different effects being seen thought to be dose-dependent, with high doses thought to promote killing and lower doses thought to enhance normal physiological function, useful in applications such as wound healing.
+Applications such as these result from the abiltiy of LTP to interact with living biological substrates such as bacteria, both in planktonic and biofilm forms \cite{Joshi2010control, Pei2012inactivation, Ziuzina2015cold} and eukaryotic, mammalian cells \cite{Haertel2014nonthermal}.
 For sterilisation applications, the properties of low temperature plasma, in particular the low temperature and ability to operate at atmospheric pressure, allow their use both on equipment surfaces \cite{Laroussi2002nonthermal} and also directly on biological tissue, for example chronically infected wounds \cite{Haertel2014nonthermal, Isbary2013nonthermal, Fridman2006blood}.
 
-This project is concerned with wound healing and how low temperature air plasma can be developed to allow treatment of wounds.
-Plasmas can be used on wounds with two aims:
+\todo{Types of colonisation?? Critical colonisation etc??}
+\section{Project Aims}
+The overall aims of this project are to investigate the use of air plasmas for wound healing applications.
+The two themes are:
 \begin{enumerate}
-\item Bacterial killing
-\item Host cell activation and healing promotion
+\item Characterisation of Air Plasma - This will involve the development of an air plasma to be characterised in terms of plasma species production, both experimentally and computationally
+\item Biological Interaction - This will involve trying to understand how the plasma influences different cellular functions in both bacterial and mammalian host cells, by developing \textit{in vitro} biological assays
 \end{enumerate}
 
-While exact mechanisms of action are not fully understood, there have been investigations into the roles of the different plasma components.
-Briefly, low temperature plasmas are very weakly ionised gases (degree of ionisation $<$ 1\%), with a global temperature of of approximately room temperature ($< 40^{\circ} C$), and dry reactive environment, allowing direct contact with biological substrates.
+When considering wound treatment applications, there are two main motivations for developing plasma treatments.
+Firstly, wounds are often colonised with bacteria which may be preventing the healing process (depending on the degree and type of colonisation), therefore, wound sterilisation by LTP might be beneficial.
+Secondly, wounds can often become chronic, meaning that the healing process has stagnated. In this case, LTP may be able to help reactivation of host cells to promote the healing process.
+
+While exact mechanisms of action are not fully understood, there have been investigations into how LTP can influence biological functioning.
 Electrons liberated in the plasma mediate the different plasma components, for example, dissociation of molecules, yielding reactive radical species, emission as a result of electron impact electronic excitation and ionisation which yields ions and allows plasma sustainment.
-It is, therefore, likely that the efficacy seen so far using plasmas is due to this complex plasma composition, and also what suggests that bacteria are going to be less likely to build up resistance, due to the multimodal nature of the plasma treatment.
+It is, therefore, likely that it is a combination of all these components that result in the biological effects seen.
+It is also possible that this multimodal nature may slow or prevent the ability of bacteria to build up resistance to the killing mechanisms.
+This would be an obvious advantage in the era of increasing resistance of bacteria to a variety of antibiotics.
+%
+% the roles of the different plasma components.
+%Briefly, low temperature plasmas are very weakly ionised gases (degree of ionisation $<$ 1\%), with a global temperature of of approximately room temperature ($< 40^{\circ} C$), and dry reactive environment, allowing direct contact with biological substrates.
+%Electrons liberated in the plasma mediate the different plasma components, for example, dissociation of molecules, yielding reactive radical species, emission as a result of electron impact electronic excitation and ionisation which yields ions and allows plasma sustainment.
+%It is, therefore, likely that the efficacy seen so far using plasmas is due to this complex plasma composition, and also what suggests that bacteria are going to be less likely to build up resistance, due to the multimodal nature of the plasma treatment.
 
-The main three components that will be discussed in the next sections are charged particles and associated electric fields, emission of, for example UV photons, and reactive neutral species.
-
+In the following sections, the main plasma components, reactive species, emission and ions and electric fields, will be discussed in the context of their roles in bacterial killing and healing promotion following LTP treatment.
 
 \subsection{Bacterial Killing}
 \subsubsection{RONS}
@@ -57,12 +82,12 @@ Whilst reactive species were thought to be purely damaging molecules produced in
 At low concentrations, RONS are vital to human health. 
 For example, they are important cell signalling regulating molecules in cells such as fibroblasts, endothelial cells and smooth muscle cells.
 Further to this, they are essential for host defence as they are produced by immune cells during an immune response in order to kill invading pathogens.
-The importance of this function is shown by patients with chronic granulomatous disease (CGD), who cannot synthesise the superoxide radical (O$_2^-\cdot$) resulting in multiple, persistent infections \cite{PhamHuy2008free, Fang2004antimicrobial}.
+The importance of this function is shown by patients with chronic granulomatous disease (CGD), who cannot synthesise the superoxide radical (O$_2^-\cdot$) in phagocytic immune cells, resulting in multiple, persistent infections \cite{PhamHuy2008free, Fang2004antimicrobial}.
 
-
-If the concentrations of RONS become excessive and there is an imbalance between radical formation and neutralisation, then they can become dangerous, causing damage to lipids, proteins and DNA \cite{PhamHuy2008free}.
-Considering plasma treatments containing ROS, these exogenous species can enter the cells, or induce the formation of new ROS intracellularly and exert their action \cite{Haertel2014nonthermal}.
-RONS can be visualised inside cells using fluorescent dyes, an example of which is shown by the likes of Joshi \textit{et al} \cite{Joshi2010control}.
+If the concentrations of RONS become excessive and there is an imbalance between radical formation and neutralisation, then they can become dangerous, causing damage to lipids, proteins and DNA \cite{PhamHuy2008free} and lead to cell death.
+Considering plasma-produced ROS, these exogenous species can enter cells across the membrane (either by diffusion or transport depending on the species \cite{Bienert2006membrane}), or induce the formation of new ROS intracellularly and exert their action \cite{Haertel2014nonthermal}.
+RONS can be visualised inside cells using fluorescent dyes, an example of which is shown by the likes of Joshi \textit{et al} \cite{Joshi2010control} \todo{Check, is RONS increased after plasma-ing?}.
+\todo{Outcome of oxidative stress?!}
 
 Oxidative attack on lipids inside cells or as part of cell membranes results in a chain reaction and the formation of harmful products, the most mutagenic and toxic being malondialdehyde (MDA) and 4-hydroxynonenal (4-HNE), respectively \cite{Ayala2014lipid}.
 Lipid peroxidation occurs as a chain reaction, mediated by free radicals, with the hydroxyl radical ($\cdot$OH) being particularly effective.
@@ -70,19 +95,16 @@ Firstly, the radical breaks an unsaturated carbon bond in the lipid, abstracts a
 The lipid peroxy radical can then attack another lipid and abstract a hydrogen, forming a new lipid radical and a lipid hydroperoxide. 
 Thus the process propagates until antioxidants such as vitamin E can neutralise the radical species \cite{Ayala2014lipid}.
 
-Proteins can be changed structurally and enzymes break \cite{PhamHuy2008free}.
+%Proteins can be changed structurally and enzymes break \cite{PhamHuy2008free}.
 
 As with lipid peroxidation, the $\cdot$OH radical is effective for damaging DNA. 
 There are many ways it can interact with the components of DNA, in particular through reactions with the purines and pyrimidines of DNA.
 Although the body has many DNA repair mechanisms in place, mutations as a result of the oxidative insult still occur.
 These are often result in mispairing of DNA bases and subsequent transversion mutations.
 For example, a common lesion formed in DNA is 8-OH-Gua (a guanine base that has been modified through attack by $\cdot$OH), which wrongly pairs with adenine and thus results in a G $\rightarrow$ T transversion mutation \cite{Dizdaroglu2012oxidatively}.
-It readily reacts with nucleotide bases, which allows for frequent mutations 
-DNA attack can cause mutations. \cite{PhamHuy2008free}.
-
-
-
-
+%It readily reacts with nucleotide bases, which allows for frequent mutations 
+%DNA attack can cause mutations. \cite{PhamHuy2008free}.
+\todo{?DNA damage outcomes}
 
 
 \subsubsection{UV}
@@ -94,9 +116,9 @@ Whilst there are suggestions for undamaged skin, there is nothing for broken, da
 
 \subsubsection{Charged Particles and Electric Fields}
 As charged particles are generally confined within the strong electric fields within the plasma, they don't tend to travel far outside the plasma bulk.
-This means that one method for delineating the roles of electric fields and particles from the other plasma components is by comparing direct (where the biological substrate is in direct contact with the plasma) and indirect (where the biological substrate is only exposed to the plasma effluent) plasma treatments.
+This means that one method for delineating the roles of electric fields and particles from the other plasma components is by comparing direct (where the bacterial sample is in direct contact with the plasma) and indirect (where the bacterial sample is only exposed to the plasma effluent) plasma treatments.
 Investigations such as this have suggested that charged particles or electric fields, or a combination of both, are important for bacterial killing as direct treatment is much more efficient that indirect treatment \cite{Fridman2007comparison}.
-A proposed mechanism for this increased efficacy when charged particles are in contact with the biological sample came from Mendis $et al$ in 2000 \cite{Mendis2000a} who suggested that accumulation of ions on the membranes of cells could cause an electrostatic force greater than the tensile strength of the membrane causing rupture.
+A proposed mechanism for this increased efficacy when charged particles are in contact with bacteria came from Mendis \textit{et al} in 2000 \cite{Mendis2000a} who suggested that accumulation of ions on the membranes of cells could cause an electrostatic force greater than the tensile strength of the membrane, causing rupture.
 This was noted following the observations of Laroussi \textit{et al} \cite{Laroussi1999images} that showed morphological changes and lysis of the treated bacteria.
 \todo{Look into electroporation mechanism. Is this just electroporation by plasmas???}
 
@@ -157,6 +179,12 @@ Lab trials show the importance of electrical currents/fields for wound healing, 
 \todo{E field strengths?? Applied voltages?? Comparison to plasmas}
 %The threshold field strength noticeable by cells is 4500 times smaller than that required for electroporation of skeletal muscle \cite{Messerli2011extracellular}.
 
+\subsection{Plasma and the Immune Response}
+Plasma can stimulate macrophage migration \cite{Miller2014plasma}. 
+ns pulsed DBD plasmas used to treat macrophages in a scratch test. Macrophages grown to confluence then scratched with a pipette tip. Plasma treatment of macrophages increased the migration of the macrophages into the gap, but only at some frequencies. Lower frequencies of ns pulsing was better than higher frequencies which caused cell death.
+
+Cancer promotion of immunogenic cell death... However, wouldn't this be a bit concerning that normal host cells might also die like this and start autoimmune responses? For example, like the idea T1 diabetes starts with a virus?!
+
 \section{Work to Date: Plasma Simulations}
 
 For the last few months I have been continuing to work on plasma simulations, using GlobalKin.
@@ -165,7 +193,7 @@ To do this, it has an internal Boltzmann solver for calculating electron energy 
 Finally, species densities are determined by an ordinary differential equation (ODE) solver to solve ODEs for species densities formed by the reaction chemistry module.
 \textbf{Figure \ref{fig:GlobalKin}} is a schematic for how GlobalKin works.
 For the chemistry module to work, an input file must be provided which contains all the plasma species and reactions along with a set of parameters.
-
+For further description of the GlobalKin model, please refer to my 3 month TAP report.
 
 
 \begin{figure}
@@ -181,12 +209,12 @@ However, as air is highly complex, involving many species and reactions, I have 
 
 
 \subsection{Nitrogen Chemistry Set}
-To begin the chemistry set, Vasco Guerra kindly shared with us his N$_2$:O$_2$ chemistry set used in \cite{Kutasi2016tuning}.
+To begin the chemistry set, Vasco Guerra and Kinga Kutasi have kindly shared with us their air chemistry set used in \cite{Kutasi2016tuning}.
 This gives a good starting point for the nitrogen reactions and their rates.
 
 \subsubsection{Species}
 
-The model so far consists of the species outlined in \textbf{table \ref{table:Species}}, in accordance with \cite{Kutasi2016tuning}.
+The model so far consists of the species outlined in table \ref{table:Species}, in accordance with \cite{Kutasi2016tuning}.
 This includes ground state N, N$_2$, N$^+$, N$_2^+$ and N$_4^+$; and various excited states of N$_2$, N$_2^+$ and N.
 Being a molecule, nitrogen can absorb energy into its bonds and is said to exist in multiple vibrational states.
 For this chemistry set, the first 17 vibrational states of ground state nitrogen are included (N$_2$ (X, v = 0 - 17)).
@@ -225,62 +253,64 @@ N$_4^+$ & - \\
 \subsubsection{Reactions and Rates}
 
 A list of all the possible reactions occurring in the plasma needs to be provided in an input file to GlobalKin.
-Each reaction must be listed with it's rate or cross section, which can be found in literature.
+Each reaction must be listed with it's rate or reaction cross section, which can be found in literature.
 
 \subsubsection*{Electron Reactions}
 The rates of electron impact reactions are highly dependent on electron energy, therefore, as electron energies in the plasma change, the rates change accordingly.
 To account for this, electron impact cross sections are specified instead of a rate.
 The reaction cross section is the probability of a reaction occurring given an electron is at a particular energy.
-GlobalKin can then use the cross sections alongside the Boltzmann solver (which calculates the electron energy distribution function at regular intervals) to calculate the reaction rate at particular time points.
+GlobalKin can then use the cross sections alongside the Boltzmann solver (which calculates the electron energy distribution function at regular intervals) to calculate the reaction rate at regular time points.
 
 GlobalKin contains the electron impact cross sections for most reactions internally and for the time being, only electron impact reactions with cross sections listed in GlobalKin have been included in this chemistry set.
-For this reason, the three N$_2$ states of a, a' and w, are all considered as a single state as there is only one cross section listed for all three of these species in GlobalKin.
+For this reason, the three N$_2$ states of N$_2$(a), N$_2$(a') and N$_2$(w), are all considered as a single state as there is only one cross section listed for all three of these species in GlobalKin.
 
 \subsubsection*{Heavy Particle Reactions}
-Heavy particles have a much more constant energy compared to electrons, due to their heavier mass. 
+Unlike electrons, heavy particles do not gain significant energy from the electric field in the plasma, due to their heavier mass.
 For this reason, reaction rates can be stated as constants, in the Arrhenius equation format.
-These rates are found in the literature and the ones being used in the model can be found in the chemistry reaction set attached.
+These rates are found in the literature.
 
 
 \subsubsection*{Vibrational Kinetics of Nitrogen}
 
 As shown above, nitrogen has many vibrational states, the first 17 of which are included in this chemistry set.
-Vibrational states are important to include in nitrogen models due to the fact that these states have an impact on the electron energy distribution function \cite{Guerra2004kinetic}.
+Vibrational states are important to include in nitrogen models due to the fact that these states have an impact on the electron energy distribution function (EEDF) \cite{Guerra2004kinetic}.
 This is due to there being a high probability of electrons colliding with N$_2$ molecules and exciting them to different vibrational states (equation \ref{eqn:ElectronVibration}), causing electron energy losses.
 \begin{equation}
-e^- + N_2(v=0) \rightarrow N_2(v=1) + e^-
+e^- + N_2(X,v=0) \rightarrow N_2(X,v=1) + e^-
 \label{eqn:ElectronVibration}
 \end{equation}
 
-Also, superelastic collisions of electrons with vibrational states (equation \ref{eqn:SuperelasticVibrational}) cause electrons to gain energy and is a process responsible for high energy electrons \cite{Guerra2004kinetic}. \todo{check!}
+Also, superelastic collisions of electrons with vibrational states (equation \ref{eqn:SuperelasticVibrational}) cause electrons to gain energy and is a process responsible for producing high energy electrons \cite{Guerra2004kinetic}.
 
 \begin{equation}
-e^- + N_2(v=1) \rightarrow N_2(v=0) + e^-
+e^- + N_2(X,v=1) \rightarrow N_2(X,v=0) + e^-
 \label{eqn:SuperelasticVibrational}
 \end{equation}
 
 As well as for their impact on the EEDF, vibrational states can also have an impact on the dissociation of N$_2$, and on gas heating in the plasma \toref{Find a reference}.
 For this reason it is important to include the production and destruction mechanisms of vibrational states.
-As well as superelastic electron collisions, shown in equation \ref{eqn:SuperelasticVibrational}, vibrationally excited states of nitrogen can also be destroyed by collisions with heavy particles N$_2$ and N, in vibration-translation (V-T), as shown in equations \ref{eqn:V-TN2} and \ref{eqn:V-TN}, respectively.
+In particular, there are two types of reactions involving vibrationally excited N$_2$ that are included in the chemistry set.
+The first is vibration-translation (V-T) reactions. In these reactions energy from vibrational excitation is transferred into other forms of energy, such as heat, and the reaction can, therefore, contribute to gas heating.
+V-T reactions can occur between vibrationally excited N$_2$ and either N$_2$ molecules or N atoms, as follows:
 
 \begin{equation}
-N_2(v=n) + N_2 (v=0) \rightarrow N_2(v=n-1) + N_2(v=0)
+N_2(X,v=n) + N_2 (X,v=0) \rightarrow N_2(X,v=n-1) + N_2(X,v=0)
 \label{eqn:V-TN2}
 \end{equation}
 \begin{equation}
-N_2(v=n) + N \rightarrow N_2(v=n-1) + N
+N_2(X,v=n) + N \rightarrow N_2(X,v=n-1) + N
 \label{eqn:V-TN}
 \end{equation}
-As well as V-T reactions, vibrationally excited N$_2$ can also be destroyed through vibration-vibration (V-V) collisions.
-The general equation for this is as follows:
+
+The second type of reaction is vibration-vibration (V-V) reactions, where vibrational energy is transferred between N$_2$ molecules as follows:
 
 \begin{equation}
-N_2(v=w) + N_2 (v=n) \rightarrow N_2(v=w-1) + N_2(v=n+1)
+N_2(X,v=w) + N_2 (X,v=n) \rightarrow N_2(X,v=w-1) + N_2(X,v=n+1)
 \label{eqn:V-V}
 \end{equation}
 
-Dissociation of N$_2$ is also influenced by the presence of vibrational states of N$_2$, however, this tends to be at the higher vibrational states (e.g. n = 45), which are not included in this model at the moment. 
-The importance of these higher vibrational states will need to be investigated and could be added in at a later date \cite{Guerra2004kinetic}.
+Dissociation of N$_2$ is also influenced by the presence of vibrational states of N$_2$, however, this tends to be at the higher vibrational states (e.g. n = 45) \cite{Guerra2004kinetic}, which are not included in this model at the moment. 
+The importance of these higher vibrational states will need to be investigated and could be added in at a later date.
 
 
 \subsubsection{Rates of Reactions Involving Vibrational States}
@@ -296,7 +326,7 @@ As shown in figures \ref{subfig:Exp} and \ref{subfig:ExpAll}, the exponential fi
 
 To then check how much difference the fits made to the rates and, therefore, the densities of the vibrational states of N$_2$, the model was run twice, once with rates from the linear fit, and once with rates from the polynomial fit.
 From this, vibrational distribution functions (VDFs) were then drawn to see how different they were.
-TO draw the VDF, the vibrational state densities are first normalised to the ground state density and then the VDF shows the populations of vibrationally excited N$_2$ compared to the ground state.
+To draw the VDFs, the vibrational state densities are first normalised to the ground state density and then the VDF shows the populations of vibrationally excited N$_2$ compared to the ground state.
 Alongside this, the density of atomic nitrogen was also determined to see how this was affected.
 The results are shown in \textbf{figure \ref{fig:VDFandN}}.
 As shown in the figures, which fit is used makes no difference to either the VDF or the atomic nitrogen density.
@@ -349,7 +379,7 @@ It was, therefore, decided that the linear fit data would be used for the model.
 
 \begin{figure}
 \begin{subfigure}{0.5\textwidth}
-\includegraphics[width=\textwidth]{Figures/VDF}
+\includegraphics[width=\textwidth]{Figures/Fit_VDF_Comparison}
 \caption{Vibrational Distribution Function}
 \label{subfig:VDF}
 \end{subfigure}
