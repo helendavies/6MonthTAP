@@ -9,6 +9,9 @@
 \usepackage{color}
 \usepackage{subcaption}
 \usepackage{caption}
+\usepackage[margin=10pt,font=small,labelfont=bf,
+labelsep=endash]{caption}
+
 
 \newcommand{\todo}[1]{ \textcolor{red}{\bf{To Do:} #1}}
 \newcommand{\toref}[1]{ \textcolor{blue}{\bf{REFERENCE #1}}}
@@ -36,7 +39,7 @@ One technique under investigation is low temperature plasma (LTP), which has sho
 
 \subsection{Low Temperature Plasmas in Biomedicine}
 Low temperature plasmas (LTP) are weakly ionised plasmas, existing far from thermodynamic equilibrium.
-This results in a plasma that has an overall cool temperature, which shouldn't cause any thermal damage on direct application to biological tissues.
+This results in a plasma that has an overall temperature of $\approx$ 25-40$^\circ$C, which can be applied to biological samples without causing thermal damage.
 
 The field of 'plasma medicine' is a rapidly expanding one, with LTP use and research increasing in various applications such as wound healing \cite{Haertel2014nonthermal, Isbary2013nonthermal}, cancer treatment \cite{Hirst2016low, Fridman2007floating}, coagulation \cite{Fridman2006blood, Chen2009blood} and sterilisation \cite{Fridman2006blood, Laroussi2002nonthermal}.
 %The interest in LTP for biomedical applications arises from the ability of plasma-produced species being able to influence biological functioning in a range of substrates.
@@ -44,34 +47,40 @@ The field of 'plasma medicine' is a rapidly expanding one, with LTP use and rese
 %The different effects being seen thought to be dose-dependent, with high doses thought to promote killing and lower doses thought to enhance normal physiological function, useful in applications such as wound healing.
 Applications such as these result from the abiltiy of LTP to interact with living biological substrates such as bacteria, both in planktonic and biofilm forms \cite{Joshi2010control, Pei2012inactivation, Ziuzina2015cold} and eukaryotic, mammalian cells \cite{Haertel2014nonthermal}.
 For sterilisation applications, the properties of low temperature plasma, in particular the low temperature and ability to operate at atmospheric pressure, allow their use both on equipment surfaces \cite{Laroussi2002nonthermal} and also directly on biological tissue, for example chronically infected wounds \cite{Haertel2014nonthermal, Isbary2013nonthermal, Fridman2006blood}.
-
-\todo{Contamination - bacteria at wound site just coz. Colonisation - here, bacteria proliferate but do not cause a host response. Some colonisation may stop healing process, or it may enhance healing as local inflammation will increase perfusion of the area and therefore may help the healing process. Critical colonisation occurs after this (controversially!) and is when the bacterial load increases which may cause chronic inflammation and prevent healing. Transition to infection occurs when the bacterial load overcomes host response and host damage occurs. This transition point depends on the bioburden and the health state of the host.}
+%
+%\todo{Contamination - bacteria at wound site just coz. Colonisation - here, bacteria proliferate but do not cause a host response. Some colonisation may stop healing process, or it may enhance healing as local inflammation will increase perfusion of the area and therefore may help the healing process. Critical colonisation occurs after this (controversially!) and is when the bacterial load increases which may cause chronic inflammation and prevent healing. Transition to infection occurs when the bacterial load overcomes host response and host damage occurs. This transition point depends on the bioburden and the health state of the host.}
 
 \section{Project Aims}
 The overall aims of this project are to investigate the use of air plasmas for wound healing applications.
-The two themes are:
+The main themes are:
 \begin{enumerate}
-\item Characterisation of Air Plasma - This will involve the development of an air plasma to be characterised in terms of plasma species production, both experimentally and computationally
-\item Biological Interaction - This will involve trying to understand how the plasma influences different cellular functions in both bacterial and mammalian host cells, by developing \textit{in vitro} biological assays
+\item Characterisation of air plasma - This will involve the development of an air plasma to be characterised in terms of plasma species production, both experimentally and computationally
+\item Biological interaction - This will involve trying to understand how the plasma influences different cellular functions in both bacterial and mammalian host cells, by developing \textit{in vitro} biological assays. 
+\item Comparison of plasma and biological studies - This should help with the determination of the roles of the different plasma components
 \end{enumerate}
 
 \section{Literature Review}
 In treating wounds, particularly chronic wounds, there are two main aims.
-Firstly, reduction in bacterial load. Secondly, particularly in chronic wounds where the healing process has stalled, promotion of the healing process is desirable.
+Firstly, reduction in bacterial load. 
+Following injury, wounds become contaminated because bacteria is all around us. 
+Proliferation of bacteria can then lead to colonisation of the wound, which may or may not be detrimental to the healing process. 
+However, if the wound becomes 'critically colonised', wound healing is thought to be impaired, and infection can follow \cite{Siddiqui2010chronic}. 
+Therefore, prevention of infection through reduction in bacterial load would be beneficial.
+Secondly, particularly in chronic wounds where the healing process has stalled, promotion of the healing process is desirable.
 
 %When considering wound treatment applications, there are two main motivations for developing plasma treatments.
 %Firstly, wounds are often colonised with bacteria which may be preventing the healing process (depending on the degree and type of colonisation), therefore, wound sterilisation by LTP might be beneficial.
 %Secondly, wounds can often become chronic, meaning that the healing process has stagnated. In this case, LTP may be able to help reactivation of host cells to promote the healing process.
 LTP is able to interact with biological function, and this is likely to be due to its multimodal nature.
-Plasma contains:
+LTPs typically contain:
 \begin{itemize}
 \item Reactive Species
 \item Photon Emission
 \item Ions
 \item Electric Fields
 \end{itemize}
-The ability of plasma to influence biological functioning is likely to be due to a combination of the above.
-In the following sections, each of the above will be discussed with respect to the roles in LTP-mediated bacterial killing and wound healing promotion.
+The ability of LTPs to influence biological functioning is likely to be due to a combination of the above.
+In the following sections, each of the above will be discussed with respect to their roles in LTP-mediated bacterial killing and wound healing promotion.
 It is important to note that for each of the plasma components, the proposed mechanism of action discussed below is mainly speculative, following investigation of them directly, not as part of a plasma.
 
 
@@ -108,9 +117,9 @@ At low concentrations they are vital to human health \cite{Fang2004antimicrobial
 %
 %If the concentrations of RONS become excessive and there is an imbalance between radical formation and neutralisation, then they can become dangerous, causing damage to lipids, proteins and DNA \cite{PhamHuy2008free} and lead to cell death.
 Considering plasma-produced ROS, these exogenous species can enter cells across the membrane (either by diffusion or transport depending on the species \cite{Bienert2006membrane}), or induce the formation of new ROS intracellularly and exert their action \cite{Haertel2014nonthermal}.
-RONS can be visualised inside cells using fluorescent dyes, an example of which is shown by the likes of Joshi \textit{et al} \cite{Joshi2011nonthermal}.
-In this study, they showed that the level of reactive species present in bacteria (E. Coli), was significantly increased by plasma treatment, compared to untreated controls.
-This suggests plasmas can induce oxidative stress int he treated bacteria, which can lead to bacterial death.
+RONS can be visualised inside cells using fluorescent dyes, an example of which is shown by Joshi \textit{et al} \cite{Joshi2011nonthermal}.
+In this study, they showed that the level of reactive species present in bacteria (E. Coli), was significantly increased after plasma treatment, compared to untreated controls.
+This suggests plasmas can induce oxidative stress in the treated bacteria, which can lead to bacterial death.
 
 RONS attacking lipids, proteins and DNA are believed to be important effector mechanisms for bacterial killing.
 Peroxidation of lipids in the bacterial membranes or inside the cells, occurs as a chain reaction and results in the formation of harmful products, the most mutagenic and toxic being malondialdehyde (MDA) and 4-hydroxynonenal (4-HNE), respectively \cite{Ayala2014lipid}.
@@ -138,9 +147,9 @@ However, it is important to note that these effects have not been investigated i
 
 
 \subsubsection{UV}
-UV emission is known to be harmful at certain wavelengths and powers, and, as such, it has been used extensively for sterilisation purposes due to it's ability to interfere with DNA \cite{Laroussi2004evaluation}.
+UV emission is known to be harmful at certain wavelengths and intensities, and, as such, it has been used extensively for sterilisation purposes due to it's ability to interfere with DNA \cite{Laroussi2004evaluation}.
 To investigate the effects of UV radiation emitted from plasmas, windows can be put between the plasma and the sample that allow specific wavelengths of UV radiation through, while blocking all other plasma components. 
-Using these methods, there is evidence to suggest that the effects of UV radiation are negligable \cite{Laroussi2004evaluation, Dobrynin2009physical}.
+Using these methods, there is evidence to suggest that the effects of UV radiation are negligible \cite{Laroussi2004evaluation, Dobrynin2009physical}.
 %There is currently a lack of safety guidelines relating to the safe dose of UV that can be applied to skin.
 %Whilst there are suggestions for undamaged skin, there is nothing for broken, damaged skin, therefore, keeping the UV emission as low as possible is probably advisable \cite{Isbary2013cold}.
 
@@ -187,7 +196,7 @@ Clinically, devices such as KinPen and MicroPlaSter have shown promise when used
 \subsubsection{RONS}
 There is evidence suggesting that RONS are important at all stages of the normal, physiological wound healing process.
 This begins with coagulation, where RONS are involved in the release of tissue factor which triggers the clotting cascade and in platelet recruitment and activation \cite{Soneja2005role}.
-Plasma-produced RONS may also act similarly, shown by multiple studies showing LTP can accelerate coagulation \cite{Fridman2006blood, Chen2009blood}.
+Plasma-produced RONS may also act similarly, shown by multiple studies demonstrating LTP can accelerate coagulation \cite{Fridman2006blood, Chen2009blood}.
 
 %There is much evidence showing the importance of RONS in the normal, physiological process of wound healing.
 %Throughout the different stages of healing, RONS have a role to play.
@@ -217,7 +226,7 @@ Being an air plasma, it is likely that there are other longer-lived species pres
 
 \subsubsection{Electric Fields}
 
-Normal plasma membranes have a potential difference across them, due to the movement of ions across the membrane.
+Normal cell membranes have a potential difference across them, due to the movement of ions across the membrane.
 When epithelium is broken through wounding, the ion currents are disrupted and an electric field is established.
 There is evidence to suggest that this electric field helps guide the migration of epithelial cells during healing \cite{Zhao2009electrical}.
 Following this, there have been studies into the effects of using electric fields for the promotion of wound healing \cite{Thakral2013electrical, Messerli2011extracellular}, many of which showed promise.
@@ -265,33 +274,34 @@ This gives a good starting point for the nitrogen reactions and their rates.
 
 \subsubsection{Species}
 
-The model so far consists of the species outlined in table \ref{table:Species}, in accordance with \cite{Kutasi2016tuning}.
-This includes ground state N, N$_2$, N$^+$, N$_2^+$ and N$_4^+$; and various excited states of N$_2$, N$_2^+$ and N.
+The model so far consists of the 31 nitrogen species, in accordance with \cite{Kutasi2016tuning}.
+This includes ground state N, N$_2$, N$^+$, N$_2^+$ and N$_4^+$; and various electronically excited states of N$_2$, N$_2^+$ and N.
+The excited states are shown in table \ref{table:Species}.
 Being a molecule, nitrogen can absorb energy into its bonds and is said to exist in multiple vibrational states.
 For this chemistry set, the first 17 vibrational states of ground state nitrogen are included (N$_2$ (X, v = 0 - 17)).
-The N$_2 (a^1\Pi_g/a'^1\Sigma^?_u/w^1\Delta_u)$ states are also included, however, they are currently considered as a single state due to reasons discussed below.
+The N$_2 (a/a'/w)$ states are also included, however, they are currently considered as a single state due to reasons discussed below.
 
 
 
 \begin{table}
-\caption{Species included in Nitrogen Chemistry Set}
+\caption{Excited States of species included in Nitrogen Chemistry Set}
 \begin{center}
 \begin{tabular}{| c | c |}
 \hline
 Species & States \\
 \hline\hline \hline
-N$_2$ & $X^1\Sigma_g^+  (v = 0 - 17),  A^3\Sigma_u^+, B^3\Pi_g, B'^3\Sigma_u^-, C^3\Pi_u, (a^1\Pi_g/a'^1\Sigma^?_u/w^1\Delta_u)$\footnotemark  \\
+N$_2$ & $X^1\Sigma_g^+  (v = 0 - 17),  A^3\Sigma_u^+, B^3\Pi_g, B'^3\Sigma_u^-, C^3\Pi_u, (a^1\Pi_g/a'^1\Sigma_u/w^1\Delta_u)$\footnotemark  \\
 \hline
 N$_2^+$ & $X^2\Sigma_g^+, B^2\Sigma_u^+ $ \\
 \hline
 N & $^4S, ^2D,  ^2P$ \\
 \hline
-N$^+$ & - \\
-\hline
-N$_2^+$ & - \\
-\hline
-N$_4^+$ & - \\
-\hline
+%N$^+$ & - \\
+%\hline
+%N$_2^+$ & - \\
+%\hline
+%N$_4^+$ & - \\
+%\hline
 \end{tabular}
 \end{center}
 \label{table:Species}
@@ -316,7 +326,7 @@ GlobalKin contains the electron impact cross sections for most reactions interna
 For this reason, the three N$_2$ states of N$_2$(a), N$_2$(a') and N$_2$(w), are all considered as a single state as there is only one cross section listed for all three of these species in GlobalKin.
 
 \subsubsection*{Heavy Particle Reactions}
-Unlike electrons, heavy particles do not gain significant energy from the electric field in the plasma, due to their heavier mass.
+Unlike electrons, heavy particles do not gain significant energy from the electric field in the plasma, due to their higher mass.
 For this reason, reaction rates can be stated as constants, in the Arrhenius equation format.
 These rates are found in the literature.
 
@@ -331,14 +341,14 @@ e^- + N_2(X,v=0) \rightarrow N_2(X,v=1) + e^-
 \label{eqn:ElectronVibration}
 \end{equation}
 
-Also, superelastic collisions of electrons with vibrational states (equation \ref{eqn:SuperelasticVibrational}) cause electrons to gain energy and is a process responsible for producing high energy electrons \cite{Guerra2004kinetic}.
+Also, superelastic collisions of electrons with vibrational states (equation \ref{eqn:SuperelasticVibrational}) cause electrons to gain energy.
 
 \begin{equation}
 e^- + N_2(X,v=1) \rightarrow N_2(X,v=0) + e^-
 \label{eqn:SuperelasticVibrational}
 \end{equation}
 
-As well as for their impact on the EEDF, vibrational states can also have an impact on the dissociation of N$_2$, and on gas heating in the plasma \toref{Find a reference}.
+As well as for their impact on the EEDF, vibrational states can also have an impact on the dissociation of N$_2$, and on gas heating in the plasma \cite{Guerra2004kinetic}.
 For this reason it is important to include the production and destruction mechanisms of vibrational states.
 In particular, there are two types of reactions involving vibrationally excited N$_2$ that are included in the chemistry set.
 The first is vibration-translation (V-T) reactions. In these reactions energy from vibrational excitation is transferred into other forms of energy, such as heat, and the reaction can, therefore, contribute to gas heating.
@@ -376,8 +386,8 @@ These are shown in \textbf{figures \ref{fig:fits}}.
 As shown in figures \ref{subfig:Exp} and \ref{subfig:ExpAll}, the exponential fit only worked when n=20 was excluded.
 
 To then check how much difference the fits made to the rates and, therefore, the densities of the vibrational states of N$_2$, the model was run twice, once with rates from the linear fit, and once with rates from the polynomial fit.
-From this, vibrational distribution functions (VDFs) were then drawn to see how different they were.
-To draw the VDFs, the vibrational state densities are first normalised to the ground state density and then the VDF shows the populations of vibrationally excited N$_2$ compared to the ground state.
+From this, vibrational distribution functions (VDFs) were then plotted to see how different they were.
+To plot the VDFs, the vibrational state densities are first normalised to the ground state density and then the VDF shows the populations of vibrationally excited N$_2$ compared to the ground state.
 Alongside this, the density of atomic nitrogen was also determined to see how this was affected.
 The results are shown in \textbf{figure \ref{fig:VDFandN}}.
 As shown in the figures, which fit is used makes no difference to either the VDF or the atomic nitrogen density.
@@ -440,13 +450,13 @@ It was, therefore, decided that the linear fit data would be used for the model.
 \caption{Atomic Nitrogen Density}
 \end{center}
 \end{subfigure}
-\caption{Graphs showing the vibrational distribution functions and atomic nitrogen densities when different fits are applied to V-T reaction rate data in \cite{Billing1979vv}}
+\caption{Graphs showing the vibrational distribution functions (a) and atomic nitrogen densities (b) when different fits are applied to V-T reaction rate data in \cite{Billing1979vv}}
 \label{fig:VDFandN}
 \end{figure}
 
 Rates for N$_2$-N V-T reactions \textbf{equation \ref{eqn:V-TN}} were taken from \cite{Guerra1995non}.
 These rates are being used for the moment, however, Guerra \textit{et al} \cite{Guerra2004kinetic} suggest that they may be too high.
-Therefore, it is something to consider changing in time.
+Therefore, it is something to consider changing in future iterations of the model.
 
 %
 %Rates for V-V reactions where n = 1 - 9 and n = 20 (\textbf{equation \ref{eqn:V-V}}) were also taken from \cite{Billing1979vv}, with subsequent data fitting.
@@ -461,29 +471,34 @@ Therefore, it is something to consider changing in time.
 %\end{center}
 %\end{figure}
 
-To investigate the importance of inclusion of the V-T reactions discussed above, the VDF and N densities were investigated when the chemistry included V-T reactions, and when they were removed.
-The results of this are shown in figure \ref{fig:VT_vs_no_VT}.
-The figure shows that the addition of V-T reactions has little/no effect on the VDF or N density.
-However, there is slight divergence between the two at the highest vibrational states.
-This not surprising as it is thought that V-T reactions are thought to be most important at higher vibrational states \cite{Guerra2004kinetic}.
 
-\begin{figure}
-\begin{subfigure}{0.5\textwidth}
-\begin{center}
-\includegraphics[width=\textwidth]{Figures/VDF_w_wo_VT}
-\caption{Comparing the VDF with and without V-V reactions included in the reaction set}
-\label{fig:VDFComp}
-\end{center}
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
-\begin{center}
-\includegraphics[width=0.84\textwidth]{Figures/N_density_w_wo_VT}
-\caption{Comparing the VDF with and without V-V reactions included in the reaction set}
-\label{fig:NComp}
-\end{center}
-\end{subfigure}
-\label{fig:VT_vs_no_VT}
-\end{figure}
+%---------------
+%This is the bit about V-T reactions. Maybe change if redo simulations....
+%---------------
+%To investigate the importance of inclusion of the V-T reactions discussed above, the VDF and N densities were investigated when the chemistry included V-T reactions, and when they were removed.
+%The results of this are shown in figure \ref{fig:VT_vs_no_VT}.
+%The figure shows that the addition of V-T reactions has little/no effect on the VDF or N density.
+%However, there is slight divergence between the two at the highest vibrational states.
+%This not surprising as it is thought that V-T reactions are thought to be most important at higher vibrational states \cite{Guerra2004kinetic}.
+%
+%\begin{figure}
+%\begin{subfigure}{0.5\textwidth}
+%\begin{center}
+%\includegraphics[width=\textwidth]{Figures/VDF_w_wo_VT}
+%\caption{Vibrational Distribution Function}
+%\label{fig:VDFComp}
+%\end{center}
+%\end{subfigure}
+%\begin{subfigure}{0.5\textwidth}
+%\begin{center}
+%\includegraphics[width=0.84\textwidth]{Figures/N_density_w_wo_VT}
+%\caption{Atomic Nitrogen Density}
+%\label{fig:NComp}
+%\end{center}
+%\end{subfigure}
+%\caption{Comparison of VDF (a) and N density (b) when V-T reactions are included or excluded from the reaction chemistry set.}
+%\label{fig:VT_vs_no_VT}
+%\end{figure}
 
 As discussed earlier, V-V reactions may also be important to include in the chemistry set.
 I am currently in the process of finding rates for these reactions and adding them into the chemistry set.
@@ -528,8 +543,9 @@ I am currently in the process of finding rates for these reactions and adding th
 
 As an example of how the model will be useful alongside experiments in the future, figure \ref{fig:ExamplePowerVar} shows how species densities can be predicted by the model, when plasma parameters are altered.
 Specifically, using the chemistry set introduced above, densities of atomic nitrogen and the excited state N$_2$(A) are shown for different plasma powers.
-Interestingly, the model shows that as plasma power is increased, the density of atomic nitrogen increases, whereas the density of the excited state of N$_2$, N$_2$(A) doesn't change.
-This gives an indication that the two species could be controlled independently.
+N$_2$(A) is a long-lived (metastable) excited state of N$_2$ with high energy ($\sim$ 6 eV), meaning it is reactive and could therefore have an effect on biological samples.
+Interestingly, the model shows that as plasma power is increased, the density of atomic nitrogen increases, whereas the N$_2$(A) density doesn't change.
+This gives an indication that the two species could be controlled independently and, therefore, could be useful to control biological effects.
 
 \begin{figure}
 \includegraphics[width=\textwidth]{Figures/ExampleDensities}
@@ -586,7 +602,7 @@ Alongside this, experimental benchmarking of the model is required to see how we
 Therefore, the type of plasma source to be used needs to be decided on.
 
 \subsection{Plasma Source}
-hen considering the geometry of the plasma source to be used, it is important to look at the requirements for the source.
+When considering the geometry of the plasma source to be used, it is important to look at the requirements for the source.
 The main criteria are:
 \begin{itemize}
 \item The ability to carry out diagnostics on the plasma source in order to be able to characterise it properly, so we can understand the plasma being produced. 
@@ -595,7 +611,7 @@ The main criteria are:
 \end{itemize}
 
 There are multiple different geometries that have been used for air plasmas, such as plasma jets \cite{Pei2012inactivation, Chen2009blood, Walsh2011portable}, corona discharges \cite{Dobrynin2011inactivation} and dielectric barrier discharges (DBDs).
-Whilst all these different geometries have their advantages and disadvantages, one major disadvantage of the likes of jets and corona discharges is that it isn't really possible to model them in GlobalKin.
+Whilst all these different geometries have their advantages and disadvantages, one major disadvantage of the likes of jets and corona discharges is that it is difficult to model them quantitatively in GlobalKin.
 This is due to two reasons.
 Firstly, the plasma volume is less well defined and secondly, the plasmas are often not very uniform and often filamentary.
 Therefore, a DBD configuration might be the most appropriate for the initial experimental stages of the project, even if the design requires changing in the future so that it is better for application to actual wounds.
