@@ -1,4 +1,5 @@
 \documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[margin=0.75in]{geometry}
 \usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
 \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
 %\geometry{landscape}                		% Activate for rotated page geometry
@@ -23,7 +24,7 @@ labelsep=endash]{caption}
 
 
 \title{6 Month TAP Report}
-\author{By Me :)}
+\author{Helen Davies}
 \date{}							% Activate to display a given date or no date
 
 \begin{document}
@@ -245,6 +246,8 @@ However, the different studies used widely varying applied voltages/currents/wav
 %
 %Cancer promotion of immunogenic cell death... However, wouldn't this be a bit concerning that normal host cells might also die like this and start autoimmune responses? For example, like the idea T1 diabetes starts with a virus?!
 
+
+
 \section{Work to Date: Plasma Simulations}
 
 For the last few months I have been continuing to work on plasma simulations, using GlobalKin.
@@ -257,7 +260,8 @@ For further description of the GlobalKin model, please refer to my 3 month TAP r
 
 
 \begin{figure}
-\includegraphics[width=\textwidth]{Figures/GlobalKinDiagram}
+\centering
+\includegraphics[width=0.8\textwidth]{Figures/GlobalKinDiagram}
 \caption{Diagram outlining how GlobalKin works. Firstly, ODEs for species density and electron temperature are constructed. This takes direct GlobalKin inputs specified by the user, as well as electron reaction rate coefficients, diffusion coefficients and mobilities from the Boltzmann solver. An ODE solver then solves the equations and the new species densities are fed back into the ODEs and Boltzmann solver, for new densities to be calculated. At regular intervals, the Boltzmann solver also updates and new coefficients are fed back into the ODEs for the ODE solver to work with. This results in the time evolution of species densities and electron temperatures.}
 \label{fig:GlobalKin}
 \end{figure}
@@ -549,7 +553,8 @@ Interestingly, the model shows that as plasma power is increased, the density of
 This gives an indication that the two species could be controlled independently and, therefore, could be useful to control biological effects.
 
 \begin{figure}
-\includegraphics[width=\textwidth]{Figures/ExampleDensities}
+\centering
+\includegraphics[width=0.8\textwidth]{Figures/ExampleDensities}
 \caption{Figure showing the densities of N (red) and N$_2$(A) as a function of plasma power density. Simulated plasma channel has dimensions 3 cm x 0.1 cm x 1.1 cm (volume of 0.33 cm$^3$).}
 \label{fig:ExamplePowerVar}
 \end{figure}
@@ -583,7 +588,8 @@ This gives information about the reaction dynamics that is not available experim
 This result is in agreement with that shown by Guerra \textit{et al} \cite{Guerra2004kinetic}, who states that $N_2(X, 10<v<25) + N_2(X, 10<v<25) \rightarrow N_2 + N + N $ is an important dissociation pathway, particularly as pressure increases.
 
 \begin{figure}
-\includegraphics[width=\textwidth]{Figures/N_Production_PumpKin}
+\centering
+\includegraphics[width=0.8\textwidth]{Figures/N_Production_PumpKin}
 \caption{Figure showing the contribution of different pathways to N production, as a function of plasma power density.}
 \label{fig:pumpkin}
 \end{figure}
